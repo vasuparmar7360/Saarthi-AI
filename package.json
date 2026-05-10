@@ -1,0 +1,24 @@
+{
+  "name": "saarthi-ai",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend && npm run build -w backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prisma": "^5.12.1",
+    "vite": "^8.0.11"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "openai": "^6.37.0",
+    "tailwind-merge": "^3.5.0",
+    "twilio": "^6.0.2"
+  }
+}

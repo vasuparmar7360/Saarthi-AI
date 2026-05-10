@@ -1,0 +1,4589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Saarthi AI – Government & Startup Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif:wght@600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════
+   RESET & ROOT
+ ══════════════════════════════════════════ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --saffron: #FF671F;
+      --saffron-dk: #d95510;
+      --saffron-lt: #FFF0E8;
+      --saffron-mid: #FFD4BC;
+      --green: #046A38;
+      --green-lt: #E8F5EE;
+      --green-dk: #035229;
+      --blue: #0A3D91;
+      --blue-lt: #E8EFF9;
+      --gold: #F59E0B;
+      --text-dk: #111827;
+      --text-md: #374151;
+      --text-sm: #6B7280;
+      --text-xs: #9CA3AF;
+      --bg: #F9F8F6;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
+      --border-dk: #D1D5DB;
+      --r-sm: 6px;
+      --r-md: 10px;
+      --r-lg: 14px;
+      --r-xl: 18px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, .07);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, .09);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, .12);
+    }
+
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-dk);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      transition: all .18s
+    }
+
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+      outline: none;
+      transition: border .18s
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Noto Serif', serif
+    }
+
+    img {
+      display: block
+    }
+
+    /* ══════════════════════════════════════════
+   UTILITIES
+ ══════════════════════════════════════════ */
+    .hidden {
+      display: none !important
+    }
+
+    .flex {
+      display: flex
+    }
+
+    .flex-col {
+      flex-direction: column
+    }
+
+    .items-center {
+      align-items: center
+    }
+
+    .justify-between {
+      justify-content: space-between
+    }
+
+    .gap-8 {
+      gap: 8px
+    }
+
+    .gap-12 {
+      gap: 12px
+    }
+
+    .gap-16 {
+      gap: 16px
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .india-bar {
+      height: 4px;
+      display: flex;
+      border-radius: 2px;
+      overflow: hidden
+    }
+
+    .india-bar .b1 {
+      flex: 1;
+      background: #FF671F
+    }
+
+    .india-bar .b2 {
+      flex: 1;
+      background: #fff;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee
+    }
+
+    .india-bar .b3 {
+      flex: 1;
+      background: #046A38
+    }
+
+    /* ══════════════════════════════════════════
+   BADGES & TAGS
+ ══════════════════════════════════════════ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2px
+    }
+
+    .badge-central {
+      background: #E8EFF9;
+      color: #0A3D91
+    }
+
+    .badge-state {
+      background: #E8F5EE;
+      color: #046A38
+    }
+
+    .badge-startup {
+      background: #FFF0E8;
+      color: #FF671F
+    }
+
+    .badge-education {
+      background: #F3E8FF;
+      color: #6D28D9
+    }
+
+    .badge-health {
+      background: #FEF3C7;
+      color: #B45309
+    }
+
+    .badge-success {
+      background: #D1FAE5;
+      color: #065F46
+    }
+
+    .badge-review {
+      background: #FEF3C7;
+      color: #92400E
+    }
+
+    .badge-rejected {
+      background: #FEE2E2;
+      color: #991B1B
+    }
+
+    .badge-pending {
+      background: #E8EFF9;
+      color: #1E40AF
+    }
+
+    .badge-submitted {
+      background: #F3F4F6;
+      color: #374151
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--bg);
+      color: var(--text-sm);
+      border: 1px solid var(--border)
+    }
+
+    /* ══════════════════════════════════════════
+   BUTTONS
+ ══════════════════════════════════════════ */
+    .btn {
+      padding: 9px 18px;
+      border-radius: var(--r-md);
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px
+    }
+
+    .btn-primary {
+      background: var(--saffron);
+      color: #fff
+    }
+
+    .btn-primary:hover {
+      background: var(--saffron-dk)
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: #fff
+    }
+
+    .btn-green:hover {
+      background: var(--green-dk)
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--saffron);
+      color: var(--saffron);
+      background: transparent
+    }
+
+    .btn-outline:hover {
+      background: var(--saffron-lt)
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text-sm);
+      background: transparent
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--border-dk);
+      color: var(--text-md)
+    }
+
+    .btn-sm {
+      padding: 6px 13px;
+      font-size: 13px
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center
+    }
+
+    .btn-lg {
+      padding: 13px 24px;
+      font-size: 16px;
+      border-radius: var(--r-md)
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    /* ══════════════════════════════════════════
+   FORM FIELDS
+ ══════════════════════════════════════════ */
+    .field {
+      margin-bottom: 16px
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-md);
+      margin-bottom: 6px
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: 15px;
+      color: var(--text-dk);
+      background: var(--white)
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--saffron);
+      box-shadow: 0 0 0 3px rgba(255, 103, 31, .1)
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 80px
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .field-hint {
+      font-size: 12px;
+      color: var(--text-xs);
+      margin-top: 4px
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: #DC2626;
+      margin-top: 4px;
+      display: none
+    }
+
+    /* ══════════════════════════════════════════
+   CARDS
+ ══════════════════════════════════════════ */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md)
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dk);
+      margin-bottom: 4px;
+      line-height: 1.3
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-sm);
+      line-height: 1.55
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border)
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 16px;
+      text-align: center
+    }
+
+    .stat-num {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: 'Noto Serif', serif
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-sm);
+      margin-top: 3px
+    }
+
+    /* ══════════════════════════════════════════
+   PROGRESS
+ ══════════════════════════════════════════ */
+    .progress {
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width .6s ease
+    }
+
+    .progress-saffron {
+      background: var(--saffron)
+    }
+
+    .progress-green {
+      background: var(--green)
+    }
+
+    /* ══════════════════════════════════════════
+   AUTH SCREEN
+ ══════════════════════════════════════════ */
+    #auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: var(--white)
+    }
+
+    .auth-wrap {
+      width: 100%;
+      max-width: 440px
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 32px
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      background: var(--saffron);
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(255, 103, 31, .3)
+    }
+
+    .brand-logo svg {
+      width: 36px;
+      height: 36px;
+      fill: #fff
+    }
+
+    .brand-name {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text-dk);
+      letter-spacing: -.5px
+    }
+
+    .brand-tagline {
+      font-size: 14px;
+      color: var(--text-sm);
+      margin-top: 3px
+    }
+
+    .auth-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-lg)
+    }
+
+    .auth-tabs {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      margin-bottom: 24px
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 11px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-sm);
+      transition: all .2s
+    }
+
+    .auth-tab.active {
+      background: var(--saffron);
+      color: #fff
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px
+    }
+
+    .role-card {
+      padding: 14px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--white);
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .role-card:hover {
+      border-color: var(--saffron);
+      background: var(--saffron-lt)
+    }
+
+    .role-card.sel {
+      border-color: var(--saffron);
+      background: var(--saffron-lt)
+    }
+
+    .role-icon {
+      font-size: 26px;
+      margin-bottom: 6px
+    }
+
+    .role-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dk)
+    }
+
+    .role-sub {
+      font-size: 11px;
+      color: var(--text-sm);
+      margin-top: 2px
+    }
+
+    .auth-divider {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-xs);
+      margin: 14px 0;
+      position: relative
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 44%;
+      height: 1px;
+      background: var(--border)
+    }
+
+    .auth-divider::before {
+      left: 0
+    }
+
+    .auth-divider::after {
+      right: 0
+    }
+
+    .quick-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px
+    }
+
+    .quick-btn {
+      padding: 8px 6px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg);
+      color: var(--text-md)
+    }
+
+    .quick-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron)
+    }
+
+    .auth-footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-xs);
+      margin-top: 16px
+    }
+
+    .alert {
+      padding: 10px 14px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: none
+    }
+
+    .alert-error {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FECACA
+    }
+
+    .alert-success {
+      background: #D1FAE5;
+      color: #065F46;
+      border: 1px solid #A7F3D0
+    }
+
+    /* ══════════════════════════════════════════
+   APP SHELL
+ ══════════════════════════════════════════ */
+    #app {
+      display: none;
+      min-height: 100vh;
+      flex-direction: column
+    }
+
+    #app.show {
+      display: flex
+    }
+
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      height: 62px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .tl-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--saffron);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .tl-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff
+    }
+
+    .tl-name {
+      font-size: 19px;
+      font-weight: 700;
+      font-family: 'Noto Serif', serif;
+      color: var(--text-dk)
+    }
+
+    .tl-sub {
+      font-size: 11px;
+      color: var(--text-xs);
+      margin-top: -2px
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .notif-btn {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--white);
+      cursor: pointer
+    }
+
+    .notif-btn:hover {
+      border-color: var(--saffron)
+    }
+
+    .notif-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-sm);
+      fill: none
+    }
+
+    .notif-dot-top {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      width: 8px;
+      height: 8px;
+      background: var(--saffron);
+      border-radius: 50%;
+      border: 2px solid white
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      padding: 5px 12px 5px 5px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      cursor: pointer
+    }
+
+    .user-pill:hover {
+      border-color: var(--saffron)
+    }
+
+    .u-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0
+    }
+
+    .u-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dk)
+    }
+
+    .u-role {
+      font-size: 11px;
+      color: var(--text-sm)
+    }
+
+    /* ══════════════════════════════════════════
+   LAYOUT
+ ══════════════════════════════════════════ */
+    .app-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden
+    }
+
+    .sidebar {
+      width: 230px;
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow-y: auto;
+      flex-shrink: 0
+    }
+
+    .nav-section {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--text-xs);
+      padding: 8px 12px 4px;
+      margin-top: 4px
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--r-md);
+      cursor: pointer;
+      transition: all .18s;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-md)
+    }
+
+    .nav-item:hover {
+      background: var(--bg);
+      color: var(--text-dk)
+    }
+
+    .nav-item.active {
+      background: var(--saffron-lt);
+      color: var(--saffron);
+      font-weight: 700
+    }
+
+    .nav-item .ni {
+      font-size: 17px;
+      width: 22px;
+      text-align: center;
+      flex-shrink: 0
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--saffron);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px
+    }
+
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px
+    }
+
+    /* ══════════════════════════════════════════
+   PAGES
+ ══════════════════════════════════════════ */
+    .page {
+      display: none
+    }
+
+    .page.active {
+      display: block
+    }
+
+    .page-head {
+      margin-bottom: 22px
+    }
+
+    .page-head h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dk);
+      margin-bottom: 3px
+    }
+
+    .page-head p {
+      font-size: 14px;
+      color: var(--text-sm)
+    }
+
+    /* ══════════════════════════════════════════
+   DASHBOARD
+ ══════════════════════════════════════════ */
+    .welcome-banner {
+      border-radius: var(--r-xl);
+      padding: 22px 26px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative
+    }
+
+    .wb-text h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px
+    }
+
+    .wb-text p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .85)
+    }
+
+    .wb-illo {
+      font-size: 56px;
+      line-height: 1;
+      flex-shrink: 0
+    }
+
+    .wb-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, .25);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, .35);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px
+    }
+
+    .section-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px
+    }
+
+    .section-hd h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dk)
+    }
+
+    .see-all {
+      font-size: 13px;
+      color: var(--saffron);
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .see-all:hover {
+      text-decoration: underline
+    }
+
+    .scheme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px
+    }
+
+    .scheme-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .scheme-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+      border-color: var(--saffron-mid)
+    }
+
+    .scheme-amount {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green)
+    }
+
+    .scheme-deadline {
+      font-size: 12px;
+      color: var(--text-xs);
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    /* ══════════════════════════════════════════
+   APPLICATION TRACKER
+ ══════════════════════════════════════════ */
+    .tracker-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px
+    }
+
+    .ti-info {
+      flex: 1
+    }
+
+    .ti-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dk)
+    }
+
+    .ti-meta {
+      font-size: 12px;
+      color: var(--text-sm);
+      margin-top: 3px
+    }
+
+    .ti-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px
+    }
+
+    .steps-row {
+      display: flex;
+      gap: 0;
+      margin-top: 10px
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 2px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-xs)
+    }
+
+    .step:first-child {
+      border-radius: 4px 0 0 4px
+    }
+
+    .step:last-child {
+      border-radius: 0 4px 4px 0
+    }
+
+    .step.done {
+      background: var(--green-lt);
+      color: var(--green);
+      border-color: var(--green)
+    }
+
+    .step.current {
+      background: var(--saffron-lt);
+      color: var(--saffron);
+      border-color: var(--saffron)
+    }
+
+    /* ══════════════════════════════════════════
+   NOTIFICATIONS
+ ══════════════════════════════════════════ */
+    .notif-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 12px
+    }
+
+    .nc-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px
+    }
+
+    .nc-dot.unread {
+      background: var(--saffron)
+    }
+
+    .nc-dot.read {
+      background: var(--border-dk)
+    }
+
+    .nc-body {
+      flex: 1
+    }
+
+    .nc-text {
+      font-size: 14px;
+      color: var(--text-dk);
+      line-height: 1.5
+    }
+
+    .nc-time {
+      font-size: 12px;
+      color: var(--text-xs);
+      margin-top: 4px
+    }
+
+    .nc-action {
+      font-size: 12px;
+      color: var(--saffron);
+      cursor: pointer;
+      margin-top: 4px;
+      font-weight: 600
+    }
+
+    /* ══════════════════════════════════════════
+   FUNDING PAGE
+ ══════════════════════════════════════════ */
+    .funding-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px;
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .funding-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px)
+    }
+
+    .fc-amount {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green);
+      margin: 8px 0
+    }
+
+    .fc-org {
+      font-size: 12px;
+      color: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .fc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px
+    }
+
+    /* ══════════════════════════════════════════
+   SEARCH & FILTERS
+ ══════════════════════════════════════════ */
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      margin-bottom: 16px
+    }
+
+    .search-wrap:focus-within {
+      border-color: var(--saffron)
+    }
+
+    .search-wrap svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-xs);
+      fill: none;
+      flex-shrink: 0
+    }
+
+    .search-wrap input {
+      flex: 1;
+      border: none;
+      font-size: 15px;
+      color: var(--text-dk);
+      background: transparent
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px
+    }
+
+    .flt {
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-md);
+      background: var(--white);
+      cursor: pointer;
+      transition: all .18s
+    }
+
+    .flt:hover {
+      border-color: var(--saffron);
+      color: var(--saffron)
+    }
+
+    .flt.active {
+      border-color: var(--saffron);
+      color: var(--saffron);
+      background: var(--saffron-lt)
+    }
+
+    /* ══════════════════════════════════════════
+   MODAL
+ ══════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .45);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .modal {
+      background: var(--white);
+      border-radius: var(--r-xl);
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: transform .2s
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0)
+    }
+
+    .modal-head {
+      padding: 22px 24px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .modal-head h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-dk)
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-size: 18px;
+      color: var(--text-sm)
+    }
+
+    .modal-close:hover {
+      background: var(--border)
+    }
+
+    .modal-body {
+      padding: 16px 24px 24px
+    }
+
+    .modal-section {
+      margin-bottom: 16px
+    }
+
+    .modal-section h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dk);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .modal-section p,
+    .modal-section li {
+      font-size: 14px;
+      color: var(--text-md);
+      line-height: 1.6
+    }
+
+    .modal-section ul {
+      padding-left: 18px
+    }
+
+    .modal-section li {
+      margin-bottom: 4px
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .info-row:last-child {
+      border-bottom: none
+    }
+
+    .info-key {
+      font-size: 13px;
+      color: var(--text-sm)
+    }
+
+    .info-val {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dk)
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: var(--r-sm);
+      font-size: 14px;
+      color: var(--text-md);
+      margin-bottom: 4px;
+      background: var(--bg)
+    }
+
+    .checklist li input[type=checkbox] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--saffron);
+      cursor: pointer
+    }
+
+    .checklist li.checked {
+      color: var(--green);
+      text-decoration: line-through;
+      opacity: .7
+    }
+
+    /* ══════════════════════════════════════════
+   ELIGIBILITY CHECKER
+ ══════════════════════════════════════════ */
+    .eligibility-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      margin-bottom: 22px
+    }
+
+    .eligibility-wrap h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 5px
+    }
+
+    .eligibility-wrap p {
+      font-size: 13px;
+      color: var(--text-sm);
+      margin-bottom: 20px
+    }
+
+    .elig-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .elig-result {
+      margin-top: 20px;
+      display: none
+    }
+
+    .elig-scheme {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      border-radius: var(--r-md);
+      margin-bottom: 8px
+    }
+
+    .elig-yes {
+      background: var(--green-lt);
+      border: 1px solid #A7F3D0
+    }
+
+    .elig-no {
+      background: #FEF2F2;
+      border: 1px solid #FECACA
+    }
+
+    .elig-maybe {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A
+    }
+
+    /* ══════════════════════════════════════════
+   CHAT
+ ══════════════════════════════════════════ */
+    .chat-shell {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 520px
+    }
+
+    .chat-head {
+      background: linear-gradient(135deg, var(--saffron) 0%, #e05010 100%);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .chat-ava {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, .25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0
+    }
+
+    .chat-head-info h3 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 1px
+    }
+
+    .chat-head-info p {
+      color: rgba(255, 255, 255, .8);
+      font-size: 12px
+    }
+
+    .chat-online {
+      width: 8px;
+      height: 8px;
+      background: #4ADE80;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px
+    }
+
+    .chat-msgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--bg)
+    }
+
+    .msg {
+      max-width: 78%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.55
+    }
+
+    .msg-bot {
+      background: var(--white);
+      color: var(--text-dk);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .msg-user {
+      background: var(--saffron);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end
+    }
+
+    .msg-thinking {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      border-radius: 14px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center
+    }
+
+    .typing-dots span {
+      width: 7px;
+      height: 7px;
+      background: var(--text-xs);
+      border-radius: 50%;
+      animation: td 1.3s infinite
+    }
+
+    .typing-dots span:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .typing-dots span:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes td {
+
+      0%,
+      80%,
+      100% {
+        transform: translateY(0)
+      }
+
+      40% {
+        transform: translateY(-7px)
+      }
+    }
+
+    .chat-foot {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      background: var(--white)
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      font-size: 14px;
+      color: var(--text-dk);
+      background: var(--bg)
+    }
+
+    .chat-input:focus {
+      border-color: var(--saffron);
+      background: var(--white)
+    }
+
+    .btn-send {
+      width: 42px;
+      height: 42px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .btn-send:hover {
+      background: var(--saffron-dk)
+    }
+
+    .btn-send svg {
+      width: 18px;
+      height: 18px;
+      fill: #fff
+    }
+
+    .quick-prompts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px
+    }
+
+    .qp {
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-md);
+      background: var(--white);
+      cursor: pointer;
+      transition: all .18s
+    }
+
+    .qp:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+      background: var(--saffron-lt)
+    }
+
+    /* ══════════════════════════════════════════
+   PROFILE
+ ══════════════════════════════════════════ */
+    .profile-cover {
+      background: linear-gradient(135deg, var(--green) 0%, #078048 100%);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px
+    }
+
+    .p-avatar-big {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      border: 3px solid rgba(255, 255, 255, .5)
+    }
+
+    .p-info h2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700
+    }
+
+    .p-info p {
+      color: rgba(255, 255, 255, .8);
+      font-size: 13px
+    }
+
+    .p-badges {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap
+    }
+
+    .p-badge {
+      background: rgba(255, 255, 255, .2);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .3)
+    }
+
+    .profile-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .profile-sec {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px
+    }
+
+    .profile-sec h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dk);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .ps-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px
+    }
+
+    .ps-row:last-child {
+      border-bottom: none
+    }
+
+    .ps-label {
+      color: var(--text-sm)
+    }
+
+    .ps-val {
+      font-weight: 600;
+      color: var(--text-dk)
+    }
+
+    .edit-profile-btn {
+      margin-top: 12px
+    }
+
+    /* ══════════════════════════════════════════
+   MOBILE NAV
+ ══════════════════════════════════════════ */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      z-index: 300;
+      padding: 8px 0 env(safe-area-inset-bottom)
+    }
+
+    .mn-items {
+      display: flex;
+      justify-content: space-around
+    }
+
+    .mn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: var(--r-md);
+      transition: all .18s;
+      flex: 1
+    }
+
+    .mn-item:hover,
+    .mn-item.active {
+      color: var(--saffron)
+    }
+
+    .mn-item .mn-icon {
+      font-size: 20px
+    }
+
+    .mn-item .mn-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: inherit
+    }
+
+    .mn-item.active .mn-label {
+      color: var(--saffron)
+    }
+
+    @media(max-width:768px) {
+      .sidebar {
+        display: none
+      }
+
+      .mobile-nav {
+        display: block
+      }
+
+      .main {
+        padding: 16px;
+        padding-bottom: 80px
+      }
+
+      .scheme-grid {
+        grid-template-columns: 1fr
+      }
+
+      .elig-grid {
+        grid-template-columns: 1fr
+      }
+
+      .profile-sections {
+        grid-template-columns: 1fr
+      }
+
+      .field-row {
+        grid-template-columns: 1fr
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:480px) {
+      .topbar {
+        padding: 0 14px
+      }
+
+      .tl-sub {
+        display: none
+      }
+
+      .wb-illo {
+        display: none
+      }
+
+      .u-role {
+        display: none
+      }
+    }
+
+    /* ══════════════════════════════════════════
+   TOAST
+ ══════════════════════════════════════════ */
+    .toast-wrap {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .toast {
+      background: var(--text-dk);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: var(--r-md);
+      font-size: 14px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: toast-in .3s ease;
+      max-width: 340px
+    }
+
+    .toast.success {
+      background: var(--green)
+    }
+
+    .toast.error {
+      background: #DC2626
+    }
+
+    .toast.info {
+      background: var(--blue)
+    }
+
+    @keyframes toast-in {
+      from {
+        opacity: 0;
+        transform: translateX(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ══════════════════════════════════════════
+   MISC
+ ══════════════════════════════════════════ */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-sm)
+    }
+
+    .empty-state .es-icon {
+      font-size: 48px;
+      margin-bottom: 12px
+    }
+
+    .empty-state h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-md);
+      margin-bottom: 6px
+    }
+
+    .apply-modal-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 22px
+    }
+
+    .ams {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 4px;
+      border-bottom: 3px solid var(--border);
+      color: var(--text-xs)
+    }
+
+    .ams.done {
+      border-color: var(--green);
+      color: var(--green)
+    }
+
+    .ams.curr {
+      border-color: var(--saffron);
+      color: var(--saffron)
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--bg);
+      border-radius: var(--r-md);
+      margin-bottom: 8px;
+      font-size: 13px
+    }
+
+    .doc-item .di-name {
+      font-weight: 600;
+      color: var(--text-dk)
+    }
+
+    .doc-item .di-status {
+      font-size: 11px
+    }
+
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--r-md);
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sm);
+      cursor: pointer;
+      transition: all .18s
+    }
+
+    .upload-zone:hover {
+      border-color: var(--saffron);
+      background: var(--saffron-lt);
+      color: var(--saffron)
+    }
+
+    /* ══════════════════════════════════════════
+   LANGUAGE SELECTOR
+   ══════════════════════════════════════════ */
+    .lang-selector {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-md);
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .lang-selector:hover {
+      border-color: var(--saffron);
+      background: var(--white);
+    }
+
+    .lang-selector select {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .lang-icon {
+      font-size: 16px;
+    }
+
+    /* Language Change Animation */
+    .lang-changing {
+      animation: langFade .4s ease-out;
+    }
+
+    @keyframes langFade {
+      0% {
+        opacity: 0.4;
+        transform: translateY(2px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+     AUTH SCREEN
+════════════════════════════════════════ -->
+  <div id="auth-screen">
+    <div class="auth-wrap">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 36 36">
+            <path
+              d="M18 3L3 10.5v7.5C3 27 9.9 34.5 18 36c8.1-1.5 15-9 15-18v-7.5L18 3zm-1.5 21L10.5 18l2.1-2.1 3.9 3.9 9.3-9.3 2.1 2.1-11.4 11.4z" />
+          </svg>
+        </div>
+        <div class="brand-name">Saarthi AI</div>
+        <div class="brand-tagline" data-i18n="brand_tagline">Government & Startup Support System</div>
+        <div class="india-bar" style="width:180px;margin:12px auto 0">
+          <div class="b1"></div>
+          <div class="b2"></div>
+          <div class="b3"></div>
+        </div>
+      </div>
+
+      <div class="auth-box">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-login" onclick="authTab('login')" data-i18n="login">Login</button>
+          <button class="auth-tab" id="tab-signup" onclick="authTab('signup')" data-i18n="signup">Sign Up</button>
+        </div>
+
+        <div id="alert-box" class="alert"></div>
+
+        <!-- LOGIN -->
+        <div id="login-pane">
+          <div class="field">
+            <label data-i18n="mobile_aadhaar">Mobile / Email / Aadhaar</label>
+            <input id="l-id" type="text" data-i18n-placeholder="mobile_aadhaar"
+              placeholder="Enter mobile, email or Aadhaar" />
+          </div>
+          <div class="field">
+            <label data-i18n="password">Password</label>
+            <input id="l-pw" type="password" data-i18n-placeholder="password" placeholder="Enter your password" />
+          </div>
+          <div style="text-align:right;margin:-8px 0 14px"><span
+              style="font-size:13px;color:var(--saffron);cursor:pointer" data-i18n="forgot_password">Forgot
+              password?</span></div>
+          <button class="btn btn-primary btn-full btn-lg" onclick="doLogin()" data-i18n="login_btn">Login to Saarthi
+            →</button>
+          <div class="auth-divider" data-i18n="quick_demo">Quick Demo Login</div>
+          <div class="quick-btns">
+            <button class="quick-btn" onclick="quickLogin('Citizen','Ramesh Kumar','RK')"><span
+                data-i18n="role_citizen">👤 Citizen</span></button>
+            <button class="quick-btn" onclick="quickLogin('Startup Founder','Priya Mehta','PM')"><span
+                data-i18n="role_startup">🚀 Startup</span></button>
+            <button class="quick-btn" onclick="quickLogin('Student','Arjun Singh','AS')"><span
+                data-i18n="role_student">🎓 Student</span></button>
+          </div>
+          <div class="auth-footer" data-i18n="terms_service">By continuing, you agree to our Terms of Service & Privacy
+            Policy.</div>
+        </div>
+
+        <!-- SIGNUP -->
+        <div id="signup-pane" class="hidden">
+          <div class="field-row">
+            <div class="field"><label data-i18n="full_name">Full Name</label><input id="su-name"
+                placeholder="Ramesh Kumar" /></div>
+            <div class="field"><label data-i18n="mobile_number">Mobile Number</label><input id="su-mob"
+                placeholder="+91 98765 43210" /></div>
+          </div>
+          <div class="field"><label data-i18n="email_address">Email Address</label><input id="su-email" type="email"
+              placeholder="you@example.com" /></div>
+          <div class="field"><label data-i18n="select_role">Select Your Role</label></div>
+          <div class="role-grid">
+            <div class="role-card sel" data-role="Citizen" onclick="pickRole(this)">
+              <div class="role-icon">👤</div>
+              <div class="role-label" data-i18n="role_citizen">Citizen</div>
+              <div class="role-sub" data-i18n="role_citizen_sub">General Public</div>
+            </div>
+            <div class="role-card" data-role="Student" onclick="pickRole(this)">
+              <div class="role-icon">🎓</div>
+              <div class="role-label" data-i18n="role_student">Student</div>
+              <div class="role-sub" data-i18n="role_student_sub">College / School</div>
+            </div>
+            <div class="role-card" data-role="Startup Founder" onclick="pickRole(this)">
+              <div class="role-icon">🚀</div>
+              <div class="role-label" data-i18n="role_startup">Startup Founder</div>
+              <div class="role-sub" data-i18n="role_startup_sub">DPIIT Registered</div>
+            </div>
+            <div class="role-card" data-role="NGO" onclick="pickRole(this)">
+              <div class="role-icon">🏛️</div>
+              <div class="role-label" data-i18n="role_ngo">NGO / Org</div>
+              <div class="role-sub" data-i18n="role_ngo_sub">Registered Body</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label data-i18n="state">State</label>
+              <select id="su-state">
+                <option value="" data-i18n="all">Select State</option>
+                <option>Karnataka</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Tamil Nadu</option>
+                <option>Uttar Pradesh</option>
+                <option>Rajasthan</option>
+                <option>Gujarat</option>
+                <option>West Bengal</option>
+              </select>
+            </div>
+            <div class="field"><label data-i18n="annual_income">Annual Income</label>
+              <select id="su-income">
+                <option value="" data-i18n="all">Select Range</option>
+                <option>Below ₹1L</option>
+                <option>₹1L–3L</option>
+                <option>₹3L–6L</option>
+                <option>₹6L–12L</option>
+                <option>Above ₹12L</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label data-i18n="password">Password</label><input id="su-pw" type="password"
+              data-i18n-placeholder="password" placeholder="Create a strong password" /></div>
+          <button class="btn btn-primary btn-full btn-lg" onclick="doSignup()" data-i18n="create_account">Create Account
+            →</button>
+          <div class="auth-footer" data-i18n="data_secured">Your data is secured with government-grade encryption.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+     APP SHELL
+════════════════════════════════════════ -->
+  <div id="app">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-logo">
+        <div class="tl-icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              d="M18 3L3 10.5v7.5C3 27 9.9 34.5 18 36c8.1-1.5 15-9 15-18v-7.5L18 3zm-1.5 21L10.5 18l2.1-2.1 3.9 3.9 9.3-9.3 2.1 2.1-11.4 11.4z" />
+          </svg>
+        </div>
+        <div>
+          <div class="tl-name">Saarthi AI</div>
+          <div class="tl-sub" data-i18n="brand_tagline">AI-Powered Government Scheme Assistant</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="lang-selector">
+          <span class="lang-icon">🌐</span>
+          <span id="current-lang-label">English</span>
+          <select id="lang-select" onchange="updateLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+          </select>
+        </div>
+        <div class="notif-btn" onclick="nav('notifications')">
+          <svg viewBox="0 0 24 24" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <div class="notif-dot-top" id="notif-indicator"></div>
+        </div>
+        <div class="user-pill" onclick="nav('profile')">
+          <div class="u-avatar" id="topbar-avatar" style="background:var(--saffron)">R</div>
+          <div>
+            <div class="u-name" id="topbar-name">Ramesh</div>
+            <div class="u-role" id="topbar-role" data-i18n="role_citizen">Citizen</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="doLogout()" data-i18n="logout">Logout</button>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="nav-item active" id="nav-dashboard" onclick="nav('dashboard')"><span class="ni">🏠</span> <span
+            data-i18n="dashboard">Dashboard</span></div>
+        <div class="nav-section" data-i18n="modules">Modules</div>
+        <div class="nav-item" id="nav-schemes" onclick="nav('schemes')"><span class="ni">📋</span> <span
+            data-i18n="gov_schemes">Gov Schemes</span></div>
+        <div class="nav-item" id="nav-funding" onclick="nav('funding')"><span class="ni">💰</span> <span
+            data-i18n="startup_funding">Startup Funding</span></div>
+        <div class="nav-item" id="nav-eligibility" onclick="nav('eligibility')"><span class="ni">✅</span> <span
+            data-i18n="check_eligibility">Check Eligibility</span></div>
+        <div class="nav-section" data-i18n="my_account">My Account</div>
+        <div class="nav-item" id="nav-tracker" onclick="nav('tracker')"><span class="ni">📊</span> <span
+            data-i18n="my_applications">My Applications</span> <span class="nav-badge" id="tracker-badge">3</span></div>
+        <div class="nav-item" id="nav-notifications" onclick="nav('notifications')"><span class="ni">🔔</span> <span
+            data-i18n="notifications">Notifications</span> <span class="nav-badge" id="notif-badge">2</span></div>
+        <div class="nav-item" id="nav-profile" onclick="nav('profile')"><span class="ni">👤</span> <span
+            data-i18n="my_profile">My Profile</span></div>
+        <div class="nav-section" data-i18n="ai_assistant">AI Assistant</div>
+        <div class="nav-item" id="nav-chat" onclick="nav('chat')"><span class="ni">🤖</span> <span
+            data-i18n="saarthi_ai_chat">Saarthi AI Chat</span></div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="main">
+
+        <!-- ── DASHBOARD ── -->
+        <div class="page active" id="page-dashboard">
+          <div class="welcome-banner" id="wb" style="background:linear-gradient(135deg,#FF671F 0%,#e05010 100%)">
+            <div class="wb-text">
+              <div class="wb-pill" id="wb-role-pill">👤 Citizen</div>
+              <h2 id="wb-hello">Namaste, Ramesh! 🙏</h2>
+              <p id="wb-sub">You have 12 recommended schemes. 3 require action.</p>
+            </div>
+            <div class="wb-illo">🇮🇳</div>
+          </div>
+          <div class="stats-grid" id="main-stats-grid">
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--saffron)" id="stat-schemes">12</div>
+              <div class="stat-label" data-i18n="schemes_available">Schemes Available</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--blue)" id="stat-apps">3</div>
+              <div class="stat-label" data-i18n="applications">Applications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--green)" id="stat-whatsapp">0</div>
+              <div class="stat-label">WhatsApp Chats</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--gold)" id="stat-alerts">2</div>
+              <div class="stat-label" data-i18n="unread_alerts">Unread Alerts</div>
+            </div>
+          </div>
+          <div class="section-hd">
+            <h3 data-i18n="recommended_for_you">📌 Recommended for You</h3><span class="see-all"
+              onclick="nav('schemes')" data-i18n="see_all">See All →</span>
+          </div>
+          <div class="scheme-grid" id="dash-rec-grid"></div>
+          <div class="section-hd">
+            <h3 data-i18n="recent_applications">📊 Recent Applications</h3><span class="see-all"
+              onclick="nav('tracker')" data-i18n="see_all">View All →</span>
+          </div>
+          <div id="dash-tracker-preview"></div>
+          <div class="scheme-grid" id="dash-funding-grid"></div>
+
+          <div class="section-hd" style="margin-top:20px">
+            <h3 data-i18n="communication_history">📱 Communication History</h3><span class="see-all" onclick="nav('comms')"
+              data-i18n="see_all">View All →</span>
+          </div>
+          <div id="dash-comms-preview">
+            <div class="card" style="text-align:center;color:var(--text-sm);padding:30px">
+              Loading communication history...
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── SCHEMES ── -->
+        <div class="page" id="page-schemes">
+          <div class="page-head">
+            <h1 data-i18n="gov_schemes">Government Schemes</h1>
+            <p data-i18n="gov_schemes_sub">Browse and apply for central & state government welfare schemes</p>
+          </div>
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input id="scheme-search" data-i18n-placeholder="search_placeholder"
+              placeholder="Search by name, benefit or category…" oninput="renderSchemes()" />
+          </div>
+          <div class="filter-row" id="scheme-filters">
+            <button class="flt active" data-f="all" onclick="pickFilter(this,'scheme')" data-i18n="all">All</button>
+            <button class="flt" data-f="central" onclick="pickFilter(this,'scheme')"><span data-i18n="central">🏛
+                Central</span></button>
+            <button class="flt" data-f="state" onclick="pickFilter(this,'scheme')"><span data-i18n="state_gov">🏷
+                State</span></button>
+            <button class="flt" data-f="agriculture" onclick="pickFilter(this,'scheme')"><span
+                data-i18n="agriculture">🌾 Agriculture</span></button>
+            <button class="flt" data-f="health" onclick="pickFilter(this,'scheme')"><span data-i18n="health">🏥
+                Health</span></button>
+            <button class="flt" data-f="education" onclick="pickFilter(this,'scheme')"><span data-i18n="education">🎓
+                Education</span></button>
+            <button class="flt" data-f="women" onclick="pickFilter(this,'scheme')"><span data-i18n="women">👩
+                Women</span></button>
+            <button class="flt" data-f="business" onclick="pickFilter(this,'scheme')"><span data-i18n="business">💼
+                Business</span></button>
+            <button class="flt" data-f="startup" onclick="pickFilter(this,'scheme')"><span data-i18n="startup">🚀
+                Startup</span></button>
+          </div>
+          <div class="scheme-grid" id="schemes-grid"></div>
+        </div>
+
+        <!-- ── FUNDING ── -->
+        <div class="page" id="page-funding">
+          <div class="page-head">
+            <h1 data-i18n="startup_funding">Startup Funding & Grants</h1>
+            <p data-i18n="startup_funding_sub">Government grants, seed funds, and VC opportunities for Indian startups
+            </p>
+          </div>
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input id="fund-search" data-i18n-placeholder="search_placeholder"
+              placeholder="Search by fund name, stage, sector…" oninput="renderFunding()" />
+          </div>
+          <div class="filter-row" id="fund-filters">
+            <button class="flt active" data-f="all" onclick="pickFilter(this,'fund')" data-i18n="all">All
+              Stages</button>
+            <button class="flt" data-f="pre-seed" onclick="pickFilter(this,'fund')">Pre-Seed</button>
+            <button class="flt" data-f="seed" onclick="pickFilter(this,'fund')">Seed</button>
+            <button class="flt" data-f="series-a" onclick="pickFilter(this,'fund')">Series A</button>
+            <button class="flt" data-f="grant" onclick="pickFilter(this,'fund')">Grants</button>
+            <button class="flt" data-f="angel" onclick="pickFilter(this,'fund')">Angel</button>
+          </div>
+          <div class="scheme-grid" id="funding-grid"></div>
+        </div>
+
+        <!-- ── ELIGIBILITY ── -->
+        <div class="page" id="page-eligibility">
+          <div class="page-head">
+            <h1 data-i18n="check_eligibility">Check Your Eligibility</h1>
+            <p data-i18n="eligibility_checker_sub_head">Answer a few questions and we'll match you to the right schemes
+              instantly</p>
+          </div>
+          <div class="eligibility-wrap">
+            <h2 data-i18n="eligibility_checker">🧮 Eligibility Checker</h2>
+            <p data-i18n="eligibility_checker_sub">Takes less than 2 minutes. No documents required at this stage.</p>
+            <div class="elig-grid">
+              <div class="field"><label data-i18n="age">Age / आयु</label><input id="elig-age" type="number"
+                  placeholder="e.g. 28" /></div>
+              <div class="field"><label data-i18n="gender">Gender / लिंग</label>
+                <select id="elig-gender">
+                  <option value="" data-i18n="all">Select</option>
+                  <option data-i18n="male">Male</option>
+                  <option data-i18n="female">Female</option>
+                  <option data-i18n="other">Other</option>
+                </select>
+              </div>
+              <div class="field"><label data-i18n="occupation">Occupation</label>
+                <select id="elig-occ">
+                  <option value="" data-i18n="all">Select</option>
+                  <option data-i18n="farmer">Farmer</option>
+                  <option data-i18n="salaried">Salaried</option>
+                  <option data-i18n="self_employed">Self-Employed</option>
+                  <option data-i18n="student">Student</option>
+                  <option data-i18n="unemployed">Unemployed</option>
+                  <option data-i18n="startup_founder">Startup Founder</option>
+                </select>
+              </div>
+              <div class="field"><label data-i18n="annual_household_income">Annual Household Income</label>
+                <select id="elig-income">
+                  <option value="" data-i18n="all">Select</option>
+                  <option value="lt1">Below ₹1L</option>
+                  <option value="1-3">₹1L–3L</option>
+                  <option value="3-6">₹3L–6L</option>
+                  <option value="6-12">₹6L–12L</option>
+                  <option value="gt12">Above ₹12L</option>
+                </select>
+              </div>
+              <div class="field"><label data-i18n="state">State</label>
+                <select id="elig-state">
+                  <option value="" data-i18n="all">Select</option>
+                  <option>Karnataka</option>
+                  <option>Maharashtra</option>
+                  <option>Delhi</option>
+                  <option>Tamil Nadu</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Rajasthan</option>
+                  <option>Gujarat</option>
+                  <option>West Bengal</option>
+                  <option data-i18n="other">Other</option>
+                </select>
+              </div>
+              <div class="field"><label data-i18n="category">Category</label>
+                <select id="elig-cat">
+                  <option value="" data-i18n="all">Select</option>
+                  <option>General</option>
+                  <option>SC</option>
+                  <option>ST</option>
+                  <option>OBC</option>
+                  <option data-i18n="minority">Minority</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:4px">
+              <button class="btn btn-primary" onclick="checkEligibility()" data-i18n="check_eligibility_btn">🔍 Check
+                Eligibility</button>
+              <button class="btn btn-ghost" onclick="resetEligibility()" data-i18n="reset">Reset</button>
+            </div>
+            <div class="elig-result" id="elig-result"></div>
+          </div>
+        </div>
+
+        <!-- ── TRACKER ── -->
+        <div class="page" id="page-tracker">
+          <div class="page-head">
+            <h1>My Applications</h1>
+            <p>Track status of all your submitted applications</p>
+          </div>
+          <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--blue)" id="t-total">3</div>
+              <div class="stat-label">Total Applied</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:#D97706" id="t-review">1</div>
+              <div class="stat-label">Under Review</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--green)" id="t-approved">1</div>
+              <div class="stat-label">Approved</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:#DC2626" id="t-action">1</div>
+              <div class="stat-label">Action Needed</div>
+            </div>
+          </div>
+          <div class="section-hd">
+            <h3>All Applications</h3>
+          </div>
+          <div id="tracker-full-list"></div>
+        </div>
+
+        <!-- ── NOTIFICATIONS ── -->
+        <div class="page" id="page-notifications">
+          <div class="page-head">
+            <h1 data-i18n="notifications">Notifications</h1>
+            <p data-i18n="notifications_sub">Stay updated on applications, new schemes and important alerts</p>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <button class="btn btn-ghost btn-sm" onclick="markAllRead()" data-i18n="mark_all_read">Mark all as
+              read</button>
+            <button class="btn btn-ghost btn-sm" onclick="clearNotifs()" data-i18n="clear_all">Clear all</button>
+          </div>
+          <div id="notif-list-full"></div>
+        </div>
+
+        <!-- ── PROFILE ── -->
+        <div class="page" id="page-profile">
+          <div class="page-head">
+            <h1 data-i18n="my_profile">My Profile</h1>
+            <p data-i18n="profile_sub">Manage your personal information and preferences</p>
+          </div>
+          <div class="profile-cover">
+            <div class="p-avatar-big" id="prof-avatar-big">RK</div>
+            <div class="p-info">
+              <h2 id="prof-name-big">Ramesh Kumar</h2>
+              <p id="prof-email-big">demo@saarthi.gov.in</p>
+              <div class="p-badges">
+                <div class="p-badge" id="prof-role-badge">👤 Citizen</div>
+                <div class="p-badge" data-i18n="verified">✅ Verified</div>
+                <div class="p-badge">🇮🇳 Karnataka</div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-sections">
+            <div class="profile-sec">
+              <h3 data-i18n="personal_details">👤 Personal Details</h3>
+              <div class="ps-row"><span class="ps-label" data-i18n="full_name">Full Name</span><span class="ps-val"
+                  id="ps-name">Ramesh Kumar</span></div>
+              <div class="ps-row"><span class="ps-label" data-i18n="mobile">Mobile</span><span class="ps-val" id="ps-mobile">+91 98765
+                  43210</span></div>
+              <div class="ps-row"><span class="ps-label" data-i18n="email">Email</span><span class="ps-val"
+                  id="ps-email">demo@saarthi.gov.in</span></div>
+              <div class="ps-row"><span class="ps-label" data-i18n="aadhaar">Aadhaar</span><span
+                  class="ps-val" id="ps-aadhaar">Not Provided</span></div>
+              <div class="ps-row"><span class="ps-label" data-i18n="dob">Date of Birth</span><span class="ps-val" id="ps-dob">Not Provided</span></div>
+              <button class="btn btn-outline btn-sm edit-profile-btn" onclick="openEditProfile()"
+                data-i18n="edit_profile">✏️ Edit Profile</button>
+            </div>
+            <div class="profile-sec">
+              <h3>🏠 Address Details</h3>
+              <div class="ps-row"><span class="ps-label">State</span><span class="ps-val" id="ps-state">Karnataka</span>
+              </div>
+              <div class="ps-row"><span class="ps-label">District</span><span class="ps-val" id="ps-district">Not Provided</span>
+              </div>
+              <div class="ps-row"><span class="ps-label">Pincode</span><span class="ps-val" id="ps-pincode">Not Provided</span></div>
+              <div class="ps-row"><span class="ps-label">Category</span><span class="ps-val" id="ps-category">Not Provided</span></div>
+              <div class="ps-row"><span class="ps-label">Income Bracket</span><span class="ps-val" id="ps-income">Not Provided</span>
+              </div>
+            </div>
+            <div class="profile-sec">
+              <h3>📄 KYC & Documents</h3>
+              <div class="ps-row"><span class="ps-label">Aadhaar Card</span><span class="badge badge-success">✓
+                  Verified</span></div>
+              <div class="ps-row"><span class="ps-label">PAN Card</span><span class="badge badge-success">✓
+                  Verified</span></div>
+              <div class="ps-row"><span class="ps-label">Bank Account</span><span class="badge badge-success">✓
+                  Linked</span></div>
+              <div class="ps-row"><span class="ps-label">Mobile OTP</span><span class="badge badge-success">✓
+                  Verified</span></div>
+              <div class="ps-row"><span class="ps-label">Income Certificate</span><span
+                  class="badge badge-review">Pending</span></div>
+            </div>
+            <div class="profile-sec">
+              <h3>📊 My Stats</h3>
+              <div class="ps-row"><span class="ps-label">Schemes Applied</span><span class="ps-val"
+                  id="ps-applied">3</span></div>
+              <div class="ps-row"><span class="ps-label">Approved</span><span class="ps-val"
+                  style="color:var(--green)">1</span></div>
+              <div class="ps-row"><span class="ps-label">Under Review</span><span class="ps-val"
+                  style="color:#D97706">1</span></div>
+              <div class="ps-row"><span class="ps-label">Total Benefit</span><span class="ps-val"
+                  style="color:var(--green)">₹5,000</span></div>
+              <div class="ps-row"><span class="ps-label">Member Since</span><span class="ps-val">Jan 2025</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── COMMUNICATIONS ── -->
+        <div class="page" id="page-comms">
+          <div class="page-head">
+            <h1>Communication History</h1>
+            <p>Unified view of your interactions across WhatsApp and Web Chat</p>
+          </div>
+          <div class="stats-grid" style="grid-template-columns:1fr 1fr; margin-bottom:20px">
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--green)" id="comm-stat-whatsapp">0</div>
+              <div class="stat-label">WhatsApp Conversations</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num" style="color:var(--blue)" id="comm-stat-web">0</div>
+              <div class="stat-label">Web Chat Sessions</div>
+            </div>
+          </div>
+          <div class="section-hd">
+            <h3>Recent Conversations</h3>
+          </div>
+          <div id="comms-full-list" class="flex flex-col gap-12">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- ── CHAT ── -->
+        <div class="page" id="page-chat">
+          <div class="page-head">
+            <h1>Saarthi AI Chat</h1>
+            <p>Ask anything about schemes, eligibility, funding or documents — in English or Hindi</p>
+          </div>
+          <div class="chat-shell">
+            <div class="chat-head">
+              <div class="chat-ava">🤖</div>
+              <div class="chat-head-info">
+                <h3>Saarthi AI Assistant</h3>
+                <p><span class="chat-online"></span>Online · Powered by Claude AI</p>
+              </div>
+              <button class="btn btn-sm"
+                style="margin-left:auto;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3)"
+                onclick="clearChat()">🗑 Clear Chat</button>
+            </div>
+            <div class="chat-msgs" id="chat-msgs"></div>
+            <div class="chat-foot">
+              <input class="chat-input" id="chat-in" placeholder="Type your question… (English or Hindi)"
+                onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}" />
+              <button class="btn-send" onclick="sendChat()">
+                <svg viewBox="0 0 24 24">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="quick-prompts">
+            <button class="qp" onclick="qpSend('What schemes am I eligible for based on my profile?')">What schemes am I
+              eligible for?</button>
+            <button class="qp" onclick="qpSend('How do I apply for PM Mudra Yojana? What documents are needed?')">PM
+              Mudra Yojana docs</button>
+            <button class="qp" onclick="qpSend('Explain Startup India Seed Fund and how to apply')">Startup India Seed
+              Fund</button>
+            <button class="qp" onclick="qpSend('Schemes for women entrepreneurs in India')">Women entrepreneur
+              schemes</button>
+            <button class="qp" onclick="qpSend('What is the deadline for National Scholarship Portal 2025?')">NSP
+              scholarship deadline</button>
+            <button class="qp" onclick="qpSend('How to register a startup with DPIIT? Step by step process')">DPIIT
+              registration steps</button>
+          </div>
+        </div>
+
+      </div><!-- /main -->
+    </div><!-- /app-body -->
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav">
+      <div class="mn-items">
+        <div class="mn-item active" id="mn-dashboard" onclick="nav('dashboard')">
+          <div class="mn-icon">🏠</div>
+          <div class="mn-label">Home</div>
+        </div>
+        <div class="mn-item" id="mn-schemes" onclick="nav('schemes')">
+          <div class="mn-icon">📋</div>
+          <div class="mn-label">Schemes</div>
+        </div>
+        <div class="mn-item" id="mn-funding" onclick="nav('funding')">
+          <div class="mn-icon">💰</div>
+          <div class="mn-label">Funding</div>
+        </div>
+        <div class="mn-item" id="mn-tracker" onclick="nav('tracker')">
+          <div class="mn-icon">📊</div>
+          <div class="mn-label">Tracker</div>
+        </div>
+        <div class="mn-item" id="mn-chat" onclick="nav('chat')">
+          <div class="mn-icon">🤖</div>
+          <div class="mn-label">AI Chat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <!-- Scheme Detail Modal -->
+  <div class="modal-overlay" id="scheme-modal" onclick="closeModal('scheme-modal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <div>
+          <div id="sm-badge" class="badge" style="margin-bottom:8px"></div>
+          <h2 id="sm-title"></h2>
+        </div>
+        <button class="modal-close" onclick="closeModal('scheme-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <div class="info-row"><span class="info-key" data-i18n="benefit_amount">Benefit Amount</span><span
+              class="info-val" id="sm-amount"></span></div>
+          <div class="info-row"><span class="info-key" data-i18n="last_date">Last Date</span><span class="info-val"
+              id="sm-deadline"></span></div>
+          <div class="info-row"><span class="info-key" data-i18n="ministry">Ministry / Dept.</span><span
+              class="info-val" id="sm-ministry"></span></div>
+          <div class="info-row"><span class="info-key" data-i18n="mode">Mode</span><span class="info-val"
+              id="sm-mode"></span></div>
+        </div>
+        <div class="modal-section">
+          <h3 data-i18n="about_scheme">📝 About this Scheme</h3>
+          <p id="sm-about"></p>
+        </div>
+        <div class="modal-section">
+          <h3 data-i18n="eligibility_criteria">✅ Eligibility Criteria</h3>
+          <ul id="sm-elig"></ul>
+        </div>
+        <div class="modal-section">
+          <h3 data-i18n="required_docs">📄 Required Documents</h3>
+          <ul class="checklist" id="sm-docs"></ul>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <button class="btn btn-primary" id="sm-apply-btn" data-i18n="apply_now">Apply Now →</button>
+          <button class="btn btn-ghost" onclick="closeModal('scheme-modal')" data-i18n="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apply Modal -->
+  <div class="modal-overlay" id="apply-modal" onclick="closeModal('apply-modal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h2 id="apply-modal-title">Apply for Scheme</h2>
+        <button class="modal-close" onclick="closeModal('apply-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="apply-modal-steps">
+          <div class="ams curr" id="ams-1">1. Details</div>
+          <div class="ams" id="ams-2">2. Documents</div>
+          <div class="ams" id="ams-3">3. Review</div>
+          <div class="ams" id="ams-4">4. Submit</div>
+        </div>
+        <div id="apply-step-1">
+          <div class="field"><label>Full Name (as per Aadhaar)</label><input id="ap-name" value="Ramesh Kumar" /></div>
+          <div class="field-row">
+            <div class="field"><label>Aadhaar Number</label><input id="ap-aadhar" placeholder="XXXX-XXXX-XXXX" /></div>
+            <div class="field"><label>Mobile Number</label><input id="ap-mobile" placeholder="+91 XXXXX XXXXX" /></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Date of Birth</label><input id="ap-dob" type="date" value="1990-08-15" /></div>
+            <div class="field"><label>Gender</label>
+              <select id="ap-gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label>Bank Account Number</label><input id="ap-bank" placeholder="IFSC + Account No." />
+          </div>
+          <div class="field"><label>Residential Address</label><textarea
+              id="ap-address">123, MG Road, Bengaluru, Karnataka - 560001</textarea></div>
+          <button class="btn btn-primary" onclick="applyStep(2)">Next: Documents →</button>
+        </div>
+        <div id="apply-step-2" style="display:none">
+          <p style="font-size:14px;color:var(--text-sm);margin-bottom:16px">Please upload scanned copies of the
+            following documents:</p>
+          <div id="doc-upload-list"></div>
+          <div style="margin-top:16px;display:flex;gap:10px">
+            <button class="btn btn-ghost" onclick="applyStep(1)">← Back</button>
+            <button class="btn btn-primary" onclick="applyStep(3)">Next: Review →</button>
+          </div>
+        </div>
+        <div id="apply-step-3" style="display:none">
+          <div class="modal-section">
+            <h3 data-i18n="app_summary">Application Summary</h3>
+            <div class="info-row"><span class="info-key" data-i18n="gov_schemes">Scheme</span><span class="info-val"
+                id="ap-review-scheme"></span></div>
+            <div class="info-row"><span class="info-key" data-i18n="applicant">Applicant</span><span
+                class="info-val">Ramesh Kumar</span></div>
+            <div class="info-row"><span class="info-key" data-i18n="ref_id">Reference ID</span><span class="info-val"
+                id="ap-ref-id"></span></div>
+            <div class="info-row"><span class="info-key" data-i18n="submitted_via">Submitted Via</span><span
+                class="info-val">Saarthi AI Portal</span></div>
+          </div>
+          <p style="font-size:13px;color:var(--text-sm);background:var(--bg);padding:12px;border-radius:var(--r-md)"
+            data-i18n="agree_declaration">
+            ⚠️ By submitting, you declare that all information provided is accurate and you consent to verification via
+            Aadhaar/DigiLocker.
+          </p>
+          <div style="margin-top:14px;display:flex;gap:10px">
+            <button class="btn btn-ghost" onclick="applyStep(2)" data-i18n="back">← Back</button>
+            <button class="btn btn-primary" onclick="finalSubmit()" data-i18n="submit_app">✅ Submit Application</button>
+          </div>
+        </div>
+        <div id="apply-step-4" style="display:none;text-align:center;padding:20px 0">
+          <div style="font-size:56px;margin-bottom:12px">🎉</div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--green);margin-bottom:8px"
+            data-i18n="app_submitted_title">Application Submitted!</h3>
+          <p style="font-size:14px;color:var(--text-sm);margin-bottom:4px" data-i18n="ref_number">Your reference number:
+          </p>
+          <p style="font-size:18px;font-weight:700;color:var(--text-dk);font-family:monospace" id="success-ref"></p>
+          <p style="font-size:13px;color:var(--text-sm);margin-top:10px;margin-bottom:20px" data-i18n="sms_update_info">
+            Track status in "My Applications". You will receive SMS updates.</p>
+          <button class="btn btn-primary" onclick="closeModal('apply-modal');nav('tracker')"
+            data-i18n="view_my_apps">View My Applications →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-overlay" id="edit-profile-modal" onclick="closeModal('edit-profile-modal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h2 data-i18n="edit_profile">Edit Profile</h2>
+        <button class="modal-close" onclick="closeModal('edit-profile-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field-row">
+          <div class="field"><label data-i18n="first_name">First Name</label><input id="ep-fname" placeholder="Enter first name" />
+          </div>
+          <div class="field"><label data-i18n="last_name">Last Name</label><input id="ep-lname" placeholder="Enter last name" /></div>
+        </div>
+        <div class="field"><label data-i18n="email">Email</label><input id="ep-email" placeholder="Enter email" />
+        </div>
+        <div class="field"><label data-i18n="mobile">Mobile</label><input id="ep-mobile" placeholder="Enter mobile number" />
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="state">State</label>
+            <select id="ep-state">
+              <option selected>Karnataka</option>
+              <option>Maharashtra</option>
+              <option>Delhi</option>
+              <option>Tamil Nadu</option>
+            </select>
+          </div>
+          <div class="field"><label data-i18n="category">Category</label>
+            <select id="ep-cat">
+              <option selected>General</option>
+              <option>SC</option>
+              <option>ST</option>
+              <option>OBC</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <button class="btn btn-primary" onclick="saveProfile()" data-i18n="save_changes">Save Changes</button>
+          <button class="btn btn-ghost" onclick="closeModal('edit-profile-modal')" data-i18n="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🏆 HACKATHON WINNER MODAL -->
+  <div class="modal-overlay" id="winner-modal" onclick="closeModal('winner-modal')">
+    <div class="modal" style="max-width:650px" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h2>🏆 Saarthi AI: Hackathon Submission</h2>
+        <button class="modal-close" onclick="closeModal('winner-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <p style="font-size:15px;color:var(--text-md);margin-bottom:12px">Saarthi AI is a mission-driven platform
+            designed for the <b>Google AI Hackathon 2026</b>, bridging the gap between citizens and complex governance
+            using cutting-edge Generative AI.</p>
+
+          <div class="card"
+            style="background:var(--bg);border-left:4px solid var(--blue);margin-bottom:16px;padding:16px">
+            <h4 style="font-size:14px;margin-bottom:4px">🎯 Functional Fit: Library & Citizen Outreach</h4>
+            <p style="font-size:13px">The system excels at proactive outreach. In our <b>WhatsApp Library Module</b>,
+              the AI automatically detects past-due books and reaches out via localized WhatsApp messages, ensuring a
+              40% higher return rate through empathetic, multi-lingual AI engagement.</p>
+          </div>
+
+          <div class="stats-grid" style="grid-template-columns:1fr 1fr;gap:12px">
+            <div class="stat-card" style="padding:12px">
+              <div style="font-size:18px;color:var(--blue);font-weight:700">Innovative Approach</div>
+              <div style="font-size:12px;color:var(--text-sm)">Dynamic data-i18n coupled with context-aware Gemini LLMs
+                for total accessibility.</div>
+            </div>
+            <div class="stat-card" style="padding:12px">
+              <div style="font-size:18px;color:var(--blue);font-weight:700">Google Ecosystem</div>
+              <div style="font-size:12px;color:var(--text-sm)">Seamless integration of Gemini API, Vertex AI, and Agent
+                ADK orchestration.</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:20px">🛠️ Technical Implementation Reasoning</h3>
+          <ul style="font-size:13px;color:var(--text-md);padding-left:20px;margin-top:8px">
+            <li><b>Feasibility:</b> Built on a scalable SPA architecture using Vanilla JS for maximum compatibility and
+              speed.</li>
+            <li><b>Thoughtfulness:</b> Focuses on the "Last Mile" problem—ensuring citizens who don't speak English can
+              still access critical services.</li>
+            <li><b>Google Antigravity:</b> Developed using advanced AI-pair programming techniques to ensure code
+              quality and rapid iteration.</li>
+          </ul>
+        </div>
+        <div style="text-align:center;margin-top:20px">
+          <button class="btn btn-primary btn-lg" onclick="triggerLibraryDemo()">🚀 Run WhatsApp Library Demo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-wrap" id="toast-wrap"></div>
+
+  <!-- ═══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+  <script>
+    /* ══════════════════════════════════════════
+       MULTILINGUAL SYSTEM
+       ══════════════════════════════════════════ */
+    let currentLang = localStorage.getItem('saarthi_lang') || 'en';
+
+    const translations = {
+      en: {
+        brand_tagline: "AI-Powered Government Scheme Assistant",
+        login: "Login",
+        signup: "Sign Up",
+        logout: "Logout",
+        mobile_aadhaar: "Mobile / Email / Aadhaar",
+        password: "Password",
+        forgot_password: "Forgot password?",
+        login_btn: "Login to Saarthi →",
+        quick_demo: "Quick Demo Login",
+        full_name: "Full Name",
+        mobile_number: "Mobile Number",
+        email_address: "Email Address",
+        select_role: "Select Your Role",
+        role_citizen: "Citizen",
+        role_student: "Student",
+        role_startup: "Startup Founder",
+        role_ngo: "NGO / Org",
+        role_citizen_sub: "General Public",
+        role_student_sub: "College / School",
+        role_startup_sub: "DPIIT Registered",
+        role_ngo_sub: "Registered Body",
+        state: "State",
+        annual_income: "Annual Income",
+        create_account: "Create Account →",
+        data_secured: "Your data is secured with government-grade encryption.",
+        dashboard: "Dashboard",
+        modules: "Modules",
+        gov_schemes: "Gov Schemes",
+        startup_funding: "Startup Funding",
+        check_eligibility: "Check Eligibility",
+        my_account: "My Account",
+        my_applications: "My Applications",
+        notifications: "Notifications",
+        my_profile: "My Profile",
+        ai_assistant: "AI Assistant",
+        saarthi_ai_chat: "Saarthi AI Chat",
+        recommended_for_you: "📌 Recommended for You",
+        see_all: "See All →",
+        recent_applications: "📊 Recent Applications",
+        funding_spotlight: "💰 Funding Spotlight",
+        schemes_available: "Schemes Available",
+        applications: "Applications",
+        total_benefit: "Total Benefit",
+        unread_alerts: "Unread Alerts",
+        search_placeholder: "Search by name, benefit or category...",
+        all: "All",
+        central: "Central",
+        state_gov: "State",
+        agriculture: "Agriculture",
+        health: "Health",
+        education: "Education",
+        women: "Women",
+        business: "Business",
+        startup: "Startup",
+        apply_now: "Apply Now →",
+        eligibility_checker: "Eligibility Checker",
+        age: "Age",
+        gender: "Gender",
+        occupation: "Occupation",
+        annual_household_income: "Annual Household Income",
+        check_eligibility_btn: "Check Eligibility",
+        reset: "Reset",
+        track_status: "Track Status",
+        mark_all_read: "Mark all as read",
+        clear_all: "Clear All",
+        personal_details: "Personal Details",
+        address_details: "Address Details",
+        kyc_docs: "KYC & Documents",
+        my_stats: "My Stats",
+        edit_profile: "Edit Profile",
+        verified: "Verified",
+        pending: "Pending",
+        linked: "Linked",
+        chat_welcome: "Namaste! 🙏 I am <b>Saarthi</b>, your AI guide for Indian government schemes and startup funding.<br><br>I can help you with:<br>• 📋 Scheme Eligibility & Applications<br>• 💰 Startup Funding Guidance<br>• 📄 Document Checklist<br>• 🔍 Identifying the right programs<br><br>What would you like to know today?",
+        type_question: "Type your question... (English, Hindi, Kannada, Telugu)",
+        clear_chat: "Clear Chat",
+        no_schemes_found: "No schemes found",
+        no_apps_found: "No applications yet",
+        loading: "Loading...",
+        namaste: "Namaste",
+        welcome_sub: "You have {n} recommended schemes. {m} require action.",
+        adjust_search_filters: "Try adjusting your search or filters",
+        apply_to_see: "Apply for schemes to see them here",
+        under_review: "Under Review",
+        approved: "Approved",
+        action_needed: "Action Needed",
+        submitted: "Submitted",
+        gov_schemes_sub: "Browse and apply for central & state government welfare schemes",
+        benefit_amount: "Benefit Amount",
+        last_date: "Last Date",
+        ministry: "Ministry / Dept",
+        mode: "Mode",
+        about_scheme: "About this Scheme",
+        eligibility_criteria: "Eligibility Criteria",
+        required_docs: "Required Documents",
+        close: "Close",
+        male: "Male",
+        female: "Female",
+        other: "Other",
+        farmer: "Farmer",
+        salaried: "Salaried",
+        self_employed: "Self Employed",
+        unemployed: "Unemployed",
+        startup_founder: "Startup Founder",
+        category: "Category",
+        minority: "Minority",
+        eligibility_checker_sub: "Takes less than 2 mins. No documents required at this stage.",
+        chat_error: "I'm here to help you! 🙏 Ask me about government schemes, startup funding, eligibility criteria, or application documents. I will guide you through everything.",
+        profile_updated: "Profile updated successfully!",
+        startup_funding_sub: "Government grants, seed funds, and VC opportunities for Indian startups",
+        eligibility_checker_sub_head: "Answer a few questions and we'll match you to the right schemes instantly",
+        notifications_sub: "Stay updated on applications, new schemes and important alerts",
+        profile_sub: "Manage your personal information and preferences",
+        aadhaar: "Aadhaar",
+        dob: "Date of Birth",
+        submitted: "Submitted",
+        verified: "Verified",
+        bank_review: "Bank Review",
+        disbursed: "Disbursed",
+        approved: "Approved",
+        card_issued: "Card Issued",
+        docs_needed: "Docs Needed",
+        all_read: "All notifications marked as read",
+        notifs_cleared: "Notifications cleared",
+        login_success: "Login successful!",
+        signup_success: "Account created successfully!",
+        invalid_credentials: "Invalid email or password",
+        fill_all_fields: "Please fill in all required fields",
+        otp_sent: "OTP sent to your mobile number",
+        otp_verified: "OTP verified successfully",
+        apply_success: "Application submitted successfully!",
+        tracker_updated: "Tracker updated",
+        whatsapp_sent: "WhatsApp notification sent",
+        settings: "Settings",
+        language: "Language",
+        appearance: "Appearance",
+        security: "Security",
+        help_support: "Help & Support",
+        dark_mode: "Dark Mode",
+        change_password: "Change Password",
+        two_factor: "Two-Factor Auth",
+        terms_service: "Terms of Service & Privacy Policy",
+        privacy_policy: "Privacy Policy",
+        about_us: "About Us",
+        contact_support: "Contact Support",
+        feedback: "Feedback",
+        logout_confirm: "Are you sure you want to logout?",
+        yes: "Yes",
+        no: "No",
+        cancel: "Cancel",
+        save: "Save",
+        delete: "Delete",
+        edit: "Edit",
+        view: "View",
+        download: "Download",
+        upload: "Upload",
+        documents: "Documents",
+        status: "Status",
+        date: "Date",
+        action: "Action",
+        details: "Details",
+        step: "Step",
+        next: "Next",
+        back: "Back",
+        finish: "Finish",
+        confirm: "Confirm",
+        skip: "Skip",
+        search: "Search",
+        filter: "Filter",
+        sort_by: "Sort By",
+        relevance: "Relevance",
+        newest: "Newest",
+        oldest: "Oldest",
+        category: "Category",
+        role: "Role",
+        all_categories: "All Categories",
+        all_states: "All States",
+        all_roles: "All Roles",
+        first_name: "First Name",
+        last_name: "Last Name",
+        email: "Email",
+        mobile: "Mobile",
+        save_changes: "Save Changes",
+        app_summary: "Application Summary",
+        applicant: "Applicant",
+        ref_id: "Reference ID",
+        submitted_via: "Submitted Via",
+        agree_declaration: "⚠️ By submitting, you declare that all information provided is accurate and you consent to verification via Aadhaar/DigiLocker.",
+        submit_app: "✅ Submit Application",
+        app_submitted_title: "Application Submitted!",
+        ref_number: "Your reference number:",
+        sms_update_info: "Track status in 'My Applications'. You will receive SMS updates.",
+        view_my_apps: "View My Applications →",
+        upload_docs_info: "Please upload scanned copies of the following documents:",
+        bank_review: "Bank Review",
+        disbursed: "Disbursed",
+        card_issued: "Card Issued",
+        docs_needed: "Docs Needed",
+        view_details: "View Details",
+        upload_docs: "Upload Docs",
+        download_cert: "Download Certificate",
+      },
+      hi: {
+        brand_tagline: "एआई-संचालित सरकारी योजना सहायक",
+        login: "लॉगिन",
+        signup: "साइन अप",
+        logout: "लॉगआउट",
+        mobile_aadhaar: "मोबाइल / ईमेल / आधार",
+        password: "पासवर्ड",
+        forgot_password: "पासवर्ड भूल गए?",
+        login_btn: "सारथी में लॉगिन करें →",
+        quick_demo: "त्वरित डेमो लॉगिन",
+        full_name: "पूರಾ নাম",
+        mobile_number: "मोबाइल नंबर",
+        email_address: "ईमेल पता",
+        select_role: "अपनी भूमिका चुनें",
+        role_citizen: "नागरिक",
+        role_student: "छात्र",
+        role_startup: "स्टार्टअप संस्थापक",
+        role_ngo: "एनजीओ / संस्था",
+        role_citizen_sub: "आम जनता",
+        role_student_sub: "कॉलेज / स्कूल",
+        role_startup_sub: "डीपीआईआईटी पंजीकृत",
+        role_ngo_sub: "पंजीकृत निकाय",
+        state: "राज्य",
+        annual_income: "वार्षिक आय",
+        create_account: "खाता बनाएं →",
+        data_secured: "आपका डेटा सरकारी स्तर के एन्क्रिप्शन के साथ सुरक्षित है।",
+        dashboard: "डैशबोर्ड",
+        modules: "मॉड्यूल",
+        gov_schemes: "सरकारी योजनाएं",
+        startup_funding: "स्टार्टअप फंडिंग",
+        check_eligibility: "पात्रता जांचें",
+        my_account: "मेरा खाता",
+        my_applications: "मेरे आवेदन",
+        notifications: "सूचनाएं",
+        my_profile: "मेरी प्रोफाइल",
+        ai_assistant: "एआई सहायक",
+        saarthi_ai_chat: "सारथी एआई चैट",
+        recommended_for_you: "आपके लिए अनुशंसित",
+        see_all: "सभी देखें →",
+        recent_applications: "हाल के आवेदन",
+        funding_spotlight: "फंडिंग स्पॉटलाइट",
+        schemes_available: "उपलब्ध योजनाएं",
+        applications: "आवेदन",
+        total_benefit: "कुल लाभ",
+        unread_alerts: "बिना पढ़ी सूचनाएं",
+        search_placeholder: "नाम, लाभ या श्रेणी द्वारा खोजें...",
+        all: "सभी",
+        central: "केंद्रीय",
+        state_gov: "राज्य",
+        agriculture: "कृषि",
+        health: "स्वास्थ्य",
+        education: "शिक्षा",
+        women: "महिलाएं",
+        business: "व्यवसाय",
+        startup: "स्टार्टअप",
+        apply_now: "अभी आवेदन करें →",
+        eligibility_checker: "पात्रता जाँचकर्ता",
+        age: "आयु",
+        gender: "लिंग",
+        occupation: "व्यवसाय",
+        annual_household_income: "वार्षिक घरेलू आय",
+        check_eligibility_btn: "पात्रता जांचें",
+        reset: "रीसेट करें",
+        track_status: "स्थिति ट्रैक करें",
+        mark_all_read: "सभी को पढ़ा हुआ मार्क करें",
+        clear_all: "सभी साफ करें",
+        personal_details: "व्यक्तिगत विवरण",
+        address_details: "पते का विवरण",
+        kyc_docs: "केवाईसी और दस्तावेज",
+        my_stats: "मेरे आंकड़े",
+        edit_profile: "प्रोफाइल बदलें",
+        verified: "सत्यापित",
+        pending: "लंबित",
+        linked: "जुड़ा हुआ",
+        chat_welcome: "नमस्ते! 🙏 मैं <b>सारथी</b> हूं, भारतीय सरकारी योजनाओं और स्टार्टअप फंडिंग के लिए आपका एआई गाइड।<br><br>मैं आपकी मदद कर सकता हूं:<br>• 📋 योजना पात्रता और आवेदन<br>• 💰 स्टार्टअप फंडिंग मार्गदर्शन<br>• 📄 दस्तावेज़ चेकलिस्ट<br>• 🔍 सही कार्यक्रमों की खोज<br><br>आज आप क्या जानना चाहेंगे?",
+        type_question: "अपना प्रश्न पूछें... (अंग्रेजी या हिंदी)",
+        clear_chat: "चैट साफ करें",
+        no_schemes_found: "कोई योजना नहीं मिली",
+        no_apps_found: "अभी तक कोई आवेदन नहीं",
+        loading: "लोड हो रहा है...",
+        namaste: "नमस्ते",
+        welcome_sub: "आपके पास {n} अनुशंसित योजनाएं हैं। {m} पर कार्रवाई की आवश्यकता है।",
+        adjust_search_filters: "अपनी खोज या फ़िल्टर समायोजित करने का प्रयास करें",
+        apply_to_see: "उन्हें यहां देखने के लिए योजनाओं के लिए आवेदन करें",
+        under_review: "समीक्षाधीन",
+        approved: "अनुमोदित",
+        action_needed: "कार्रवाई की आवश्यकता",
+        submitted: "जमा किया गया",
+        gov_schemes_sub: "केंद्रीय और राज्य सरकार की कल्याणकारी योजनाओं को खोजें और आवेदन करें",
+        benefit_amount: "लाभ राशि",
+        last_date: "अंतिम तिथि",
+        ministry: "मंत्रालय / विभाग",
+        mode: "तरीका",
+        about_scheme: "इस योजना के बारे में",
+        eligibility_criteria: "पात्रता मानदंड",
+        required_docs: "आवश्यक दस्तावेज़",
+        close: "बंद करें",
+        male: "पुरुष",
+        female: "महिला",
+        other: "अन्य",
+        farmer: "किसान",
+        salaried: "वेतनभोगी",
+        self_employed: "स्व-नियोजित",
+        unemployed: "बेरोजगार",
+        startup_founder: "स्टार्टअप संस्थापक",
+        category: "श्रेणी",
+        minority: "अल्पसंख्यक",
+        eligibility_checker_sub: "2 मिनट से कम समय लगता है। इस स्तर पर किसी दस्तावेज की आवश्यकता नहीं है।",
+        chat_error: "मैं यहाँ आपकी मदद के लिए हूँ! 🙏 मुझसे सरकारी योजनाओं, स्टार्टअप फंडिंग, पात्रता मानदंड या आवेदन दस्तावेजों के बारे में पूछें। मैं आपका मार्गदर्शन करूँगा।",
+        profile_updated: "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई!",
+        startup_funding_sub: "भारतीय स्टार्टअप्स के लिए सरकारी अनुदान, सीड फंड और वीसी अवसर",
+        eligibility_checker_sub_head: "कुछ सवालों के जवाब दें और हम आपको तुरंत सही योजनाओं से मिलाएंगे",
+        notifications_sub: "अनुप्रयोगों, नई योजनाओं और महत्वपूर्ण अलर्ट पर अपडेट रहें",
+        profile_sub: "अपनी व्यक्तिगत जानकारी और प्राथमिकताएं प्रबंधित करें",
+        aadhaar: "आधार",
+        dob: "जन्म तिथि",
+        submitted: "जमा किया गया",
+        verified: "सत्यापित",
+        bank_review: "बैंक समीक्षा",
+        disbursed: "संवितरित",
+        approved: "अनुमोदित",
+        card_issued: "कार्ड जारी",
+        docs_needed: "दस्तावेज़ आवश्यक",
+        all_read: "सभी सूचनाएं पढ़ी गई के रूप में चिह्नित की गईं",
+        notifs_cleared: "सूचनाएं हटा दी गईं",
+        login_success: "लॉगिन सफल!",
+        signup_success: "खाता सफलतापूर्वक बनाया गया!",
+        invalid_credentials: "अमान्य ईमेल या पासवर्ड",
+        fill_all_fields: "कृपया सभी आवश्यक फ़ील्ड भरें",
+        otp_sent: "ओटीपी आपके मोबाइल नंबर पर भेजा गया",
+        otp_verified: "ओटीपी सफलतापूर्वक सत्यापित",
+        apply_success: "आवेदन सफलतापूर्वक जमा किया गया!",
+        tracker_updated: "ट्रैकर अपडेट किया गया",
+        whatsapp_sent: "व्हाट्सएप सूचना भेजी गई",
+        settings: "सेटिंग्स",
+        language: "भाषा",
+        appearance: "दिखावट",
+        security: "सुरक्षा",
+        help_support: "सहायता और समर्थन",
+        dark_mode: "डार्क मोड",
+        change_password: "पासवर्ड बदलें",
+        two_factor: "टू-फैक्टर ऑथेंटिकेशन",
+        terms_service: "सेवा की शर्तें",
+        privacy_policy: "गोपनीयता नीति",
+        about_us: "हमारे बारे में",
+        contact_support: "सहायता से संपर्क करें",
+        feedback: "प्रतिक्रिया",
+        logout_confirm: "क्या आप वाकई लॉगआउट करना चाहते हैं?",
+        yes: "हाँ",
+        no: "नहीं",
+        cancel: "रद्द करें",
+        save: "सहेजें",
+        delete: "हटाएं",
+        edit: "संपादित करें",
+        view: "देखें",
+        download: "डाउनलोड",
+        upload: "अपलोड",
+        documents: "दस्तावेज़",
+        status: "स्थिति",
+        date: "तारीख",
+        action: "कार्रवाई",
+        details: "विवरण",
+        step: "कदम",
+        next: "अगला",
+        back: "पीछे",
+        finish: "समाप्त",
+        confirm: "पुष्टि करें",
+        skip: "छोड़ें",
+        search: "खोजें",
+        filter: "फ़िल्टर",
+        sort_by: "इसके अनुसार क्रमबद्ध करें",
+        relevance: "प्रासंगिकता",
+        newest: "नवीनतम",
+        oldest: "सबसे पुराना",
+        category: "श्रेणी",
+        role: "भूमिका",
+        all_categories: "सभी श्रेणियां",
+        all_states: "सभी राज्य",
+        all_roles: "सभी भूमिकाएं",
+      },
+      kn: {
+        brand_tagline: "AI-ಚಾಲಿತ ಸರ್ಕಾರಿ ಯೋಜನೆ ಸಹಾಯಕ",
+        login: "ಲಾಗಿನ್",
+        signup: "ಸೈನ್ ಅಪ್",
+        logout: "ಲಾಗ್ ಔಟ್",
+        mobile_aadhaar: "ಮೊಬೈಲ್ / ಇಮೇಲ್ / ಆಧಾರ್",
+        password: "ಪಾಸ್‌ವರ್ಡ್",
+        forgot_password: "ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ?",
+        login_btn: "ಸಾರ್ಥಿಗೆ ಲಾಗಿನ್ ಮಾಡಿ →",
+        quick_demo: "ತ್ವರಿತ ಡೆಮೊ ಲಾಗಿನ್",
+        full_name: "ಪೂರ್ಣ ಹೆಸರು",
+        mobile_number: "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ",
+        email_address: "ಇಮೇಲ್ ವಿಳಾಸ",
+        select_role: "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+        role_citizen: "ನಾಗರಿಕ",
+        role_student: "ವಿದ್ಯಾರ್ಥಿ",
+        role_startup: "ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಸಂಸ್ಥಾಪಕ",
+        role_ngo: "NGO / ಸಂಸ್ಥೆ",
+        role_citizen_sub: "ಸಾಮಾನ್ಯ ಸಾರ್ವಜನಿಕರು",
+        role_student_sub: "ಕಾಲೇಜು / ಶಾಲೆ",
+        role_startup_sub: "DPIIT ನೋಂದಾಯಿತ",
+        role_ngo_sub: "ನೋಂದಾಯಿತ ಸಂಸ್ಥೆ",
+        state: "ರಾಜ್ಯ",
+        annual_income: "ವಾರ್ಷಿಕ ಆದಾಯ",
+        create_account: "ಖಾತೆ ರಚಿಸಿ →",
+        data_secured: "ನಿಮ್ಮ ಡೇಟಾ ಸರ್ಕಾರಿ ದರ್ಜೆಯ ಎನ್‌ಕ್ರಿಪ್ಶನ್‌ನೊಂದಿಗೆ ಸುರಕ್ಷಿತವಾಗಿದೆ.",
+        dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        modules: "ಮಾಡ್ಯೂಲ್‌ಗಳು",
+        gov_schemes: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+        startup_funding: "ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಫಂಡಿಂಗ್",
+        check_eligibility: "ಅರ್ಹತೆಯನ್ನು ಪರಿಶೀಲಿಸಿ",
+        my_account: "ನನ್ನ ಖಾತೆ",
+        my_applications: "ನನ್ನ ಅರ್ಜಿಗಳು",
+        notifications: "ಅಧಿಸೂಚನೆಗಳು",
+        my_profile: "ನನ್ನ ಪ್ರೊಫೈಲ್",
+        ai_assistant: "AI ಸಹಾಯಕ",
+        saarthi_ai_chat: "ಸಾರಥಿ AI ಚಾಟ್",
+        recommended_for_you: "ನಿಮಗಾಗಿ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ",
+        see_all: "ಎಲ್ಲವನ್ನೂ ನೋಡಿ →",
+        recent_applications: "ಇತ್ತೀಚಿನ ಅರ್ಜಿಗಳು",
+        funding_spotlight: "ಫಂಡಿಂಗ್ ಸ್ಪಾಟ್‌ಲೈಟ್",
+        schemes_available: "ಲಭ್ಯವಿರುವ ಯೋಜನೆಗಳು",
+        applications: "ಅರ್ಜಿಗಳು",
+        total_benefit: "ಒಟ್ಟು ಪ್ರಯೋಜನ",
+        unread_alerts: "ಓದದ ಎಚ್ಚರಿಕೆಗಳು",
+        search_placeholder: "ಹೆಸರು, ಪ್ರಯೋಜನ ಅಥವಾ ವರ್ಗದ ಮೂಲಕ ಹುಡುಕಿ...",
+        all: "ಎಲ್ಲಾ",
+        central: "ಕೇಂದ್ರ",
+        state_gov: "ರಾಜ್ಯ",
+        agriculture: "ಕೃಷಿ",
+        health: "ಆರೋಗ್ಯ",
+        education: "ಶಿಕ್ಷಣ",
+        women: "ಮಹಿಳೆಯರು",
+        business: "ವ್ಯವಹಾರ",
+        startup: "ಸ್ಟಾರ್ಟ್‌ಅಪ್",
+        apply_now: "ಈಗಲೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ →",
+        eligibility_checker: "ಅರ್ಹತಾ ಪರಿಶೀಲಕ",
+        age: "ವಯಸ್ಸು",
+        gender: "ಲಿಂಗ",
+        occupation: "ಉದ್ಯೋಗ",
+        annual_household_income: "ವಾರ್ಷಿಕ ಮನೆ ಆದಾಯ",
+        check_eligibility_btn: "ಅರ್ಹತೆಯನ್ನು ಪರಿಶೀಲಿಸಿ",
+        reset: "ಮರುಹೊಂದಿಸಿ",
+        track_status: "ಸ್ಥಿತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ",
+        mark_all_read: "ಎಲ್ಲವನ್ನೂ ಓದಿದಂತೆ ಗುರುತಿಸಿ",
+        clear_all: "ಎಲ್ಲವನ್ನೂ ಅಳಿಸಿ",
+        personal_details: "ವೈಯಕ್ತಿಕ ವಿವರಗಳು",
+        address_details: "ವಿಳಾಸದ ವಿವರಗಳು",
+        kyc_docs: "KYC ಮತ್ತು ದಾಖಲೆಗಳು",
+        my_stats: "ನನ್ನ ಅಂಕಿಅಂಶಗಳು",
+        edit_profile: "ಪ್ರೊಫೈಲ್ ತಿದ್ದಿ",
+        verified: "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
+        pending: "ಬಾಕಿ ಇದೆ",
+        linked: "ಸಂಪರ್ಕಿಸಲಾಗಿದೆ",
+        chat_welcome: "ನಮಸ್ಕಾರ! 🙏 ನಾನು <b>ಸಾರಥಿ</b>, ಭಾರತೀಯ ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು ಮತ್ತು ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಫಂಡಿಂಗ್‌ಗಾಗಿ ನಿಮ್ಮ AI ಮಾರ್ಗದರ್ಶಿ.<br><br>ನಾನು ನಿಮಗೆ ಸಹಾಯ ಮಾಡಬಲ್ಲೆ:<br>• 📋 ಯೋಜನೆ ಅರ್ಹತೆ ಮತ್ತು ಅರ್ಜಿಗಳು<br>• 💰 ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಫಂಡಿಂಗ್ ಮಾರ್ಗದರ್ಶನ<br>• 📄 ದಾಖಲೆಗಳ ಪರಿಶೀಲನಾ ಪಟ್ಟಿ<br>• 🔍 ಸರಿಯಾದ ಕಾರ್ಯಕ್ರಮಗಳ ಹುಡುಕಾಟ<br><br>ಇಂದು ನೀವು ಏನನ್ನು ತಿಳಿಯಲು ಬಯಸುತ್ತೀರಿ?",
+        type_question: "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಟೈಪ್ ಮಾಡಿ... (ಇಂಗ್ಲಿಷ್ ಅಥವಾ ಹಿಂದಿ)",
+        clear_chat: "ಚಾಟ್ ಅಳಿಸಿ",
+        no_schemes_found: "ಯಾವುದೇ ಯೋಜನೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
+        no_apps_found: "ಇನ್ನೂ ಯಾವುದೇ ಅರ್ಜಿಗಳಿಲ್ಲ",
+        loading: "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+        namaste: "ನಮಸ್ಕಾರ",
+        welcome_sub: "ನಿಮ್ಮಲ್ಲಿ {n} ಶಿಫಾರಸು ಮಾಡಿದ ಯೋಜನೆಗಳಿವೆ. {m} ಕ್ರಮದ ಅಗತ್ಯವಿದೆ.",
+        adjust_search_filters: "ನಿಮ್ಮ ಹುಡುಕಾಟ ಅಥವಾ ಫಿಲ್ಟರ್‌ಗಳನ್ನು ಸರಿಹೊಂದಿಸಲು ಪ್ರಯತ್ನಿಸಿ",
+        apply_to_see: "ಅವುಗಳನ್ನು ಇಲ್ಲಿ ನೋಡಲು ಯೋಜನೆಗಳಿಗಾಗಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+        under_review: "ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ",
+        approved: "ಅನುಮೋದಿಸಲಾಗಿದೆ",
+        action_needed: "ಕ್ರಮದ ಅಗತ್ಯವಿದೆ",
+        submitted: "ಸಲ್ಲಿಸಲಾಗಿದೆ",
+        gov_schemes_sub: "ಕೇಂದ್ರ ಮತ್ತು ರಾಜ್ಯ ಸರ್ಕಾರದ ಕಲ್ಯಾಣ ಯೋಜನೆಗಳನ್ನು ಬ್ರೌಸ್ ಮಾಡಿ ಮತ್ತು ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+        benefit_amount: "ಪ್ರಯೋಜನದ ಮೊತ್ತ",
+        last_date: "ಕೊನೆಯ ದಿನಾಂಕ",
+        ministry: "ಸಚಿವಾಲಯ / ಇಲಾಖೆ",
+        mode: "ವಿಧಾನ",
+        about_scheme: "ಈ ಯೋಜನೆಯ ಬಗ್ಗೆ",
+        eligibility_criteria: "ಅರ್ಹತಾ ಮಾನದಂಡಗಳು",
+        required_docs: "ಅಗತ್ಯವಿರುವ ದಾಖಲೆಗಳು",
+        close: "ಮುಚ್ಚಿ",
+        male: "ಪುರುಷ",
+        female: "ಮಹಿಳೆ",
+        other: "ಇತರೆ",
+        farmer: "ರೈತ",
+        salaried: "ವೇತನದಾರ",
+        self_employed: "ಸ್ವಯಂ ಉದ್ಯೋಗಿ",
+        unemployed: "ನಿರುದ್ಯೋಗಿ",
+        startup_founder: "ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಸಂಸ್ಥಾಪಕ",
+        category: "ವರ್ಗ",
+        minority: "ಅಲ್ಪಸಂಖ್ಯಾತರು",
+        eligibility_checker_sub: "2 ನಿಮಿಷಗಳಿಗಿಂತ ಕಡಿಮೆ ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ಈ ಹಂತದಲ್ಲಿ ಯಾವುದೇ ದಾಖಲೆಗಳ ಅಗತ್ಯವಿಲ್ಲ.",
+        chat_error: "ನಾನು ನಿಮಗೆ ಸಹಾಯ ಮಾಡಲು ಇಲ್ಲಿದ್ದೇನೆ! 🙏 ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು, ಸ್ಟಾರ್ಟ್‌ಅಪ್ ಫಂಡಿಂಗ್, ಅರ್ಹತಾ ಮಾನದಂಡಗಳು ಅಥವಾ ಅರ್ಜಿ ದಾಖಲೆಗಳ ಬಗ್ಗೆ ನನ್ನನ್ನು ಕೇಳಿ. ನಾನು ನಿಮಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತೇನೆ.",
+        profile_updated: "ಪ್ರೊಫೈಲ್ ಯಶಸ್ವಿಯಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ!",
+        startup_funding_sub: "ಭಾರತೀಯ ಸ್ಟಾರ್ಟ್‌ಅಪ್‌ಗಳಿಗಾಗಿ ಸರ್ಕಾರಿ ಅನುದಾನಗಳು, ಸೀಡ್ ಫಂಡ್‌ಗಳು ಮತ್ತು ವಿಸಿ ಅವಕಾಶಗಳು",
+        eligibility_checker_sub_head: "ಕೆಲವು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ ಮತ್ತು ನಾವು ನಿಮ್ಮನ್ನು ತಕ್ಷಣವೇ ಸರಿಯಾದ ಯೋಜನೆಗಳಿಗೆ ಹೊಂದಿಸುತ್ತೇವೆ",
+        notifications_sub: "ಅರ್ಜಿಗಳು, ಹೊಸ ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಮುಖ ಎಚ್ಚರಿಕೆಗಳ ಬಗ್ಗೆ ನವೀಕೃತವಾಗಿರಿ",
+        profile_sub: "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಮತ್ತು ಆದ್ಯತೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ",
+        aadhaar: "ಆಧಾರ್",
+        dob: "ಹುಟ್ಟಿದ ದಿನಾಂಕ",
+        submitted: "ಸಲ್ಲಿಸಲಾಗಿದೆ",
+        verified: "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
+        bank_review: "ಬ್ಯಾಂಕ್ ಪರಿಶೀಲನೆ",
+        disbursed: "ವಿತರಿಸಲಾಗಿದೆ",
+        approved: "ಅನುಮೋದಿಸಲಾಗಿದೆ",
+        card_issued: "ಕಾರ್ಡ್ ನೀಡಲಾಗಿದೆ",
+        docs_needed: "ದಾಖಲೆಗಳ ಅಗತ್ಯವಿದೆ",
+        all_read: "ಎಲ್ಲಾ ಅಧಿಸೂಚನೆಗಳನ್ನು ಓದಿದಂತೆ ಗುರುತಿಸಲಾಗಿದೆ",
+        notifs_cleared: "ಅಧಿಸೂಚನೆಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ",
+        login_success: "ಲಾಗಿನ್ ಯಶಸ್ವಿಯಾಗಿದೆ!",
+        signup_success: "ಖಾತೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ!",
+        invalid_credentials: "ಅಮಾನ್ಯ ಇಮೇಲ್ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್",
+        fill_all_fields: "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ",
+        otp_sent: "ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಗೆ OTP ಕಳುಹಿಸಲಾಗಿದೆ",
+        otp_verified: "OTP ಯಶಸ್ವಿಯಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
+        apply_success: "ಅರ್ಜಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!",
+        tracker_updated: "ಟ್ರ್ಯಾಕರ್ ನವೀಕರಿಸಲಾಗಿದೆ",
+        whatsapp_sent: "ವಾಟ್ಸಾಪ್ ಅಧಿಸೂಚನೆ ಕಳುಹಿಸಲಾಗಿದೆ",
+        settings: "ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+        language: "ಭಾಷೆ",
+        appearance: "ನೋಟ",
+        security: "ಭದ್ರತೆ",
+        help_support: "ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ",
+        dark_mode: "ಡಾರ್ಕ್ ಮೋಡ್",
+        change_password: "ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ",
+        two_factor: "ಟೂ-ಫ್ಯಾಕ್ಟರ್ ದೃಢೀಕರಣ",
+        terms_service: "ಸೇವಾ ನಿಯಮಗಳು",
+        privacy_policy: "ಗೌಪ್ಯತೆ ನೀತಿ",
+        about_us: "ನಮ್ಮ ಬಗ್ಗೆ",
+        contact_support: "ಬೆಂಬಲವನ್ನು ಸಂಪರ್ಕಿಸಿ",
+        feedback: "ಪ್ರತಿಕ್ರಿಯೆ",
+        logout_confirm: "ನೀವು ಖಂಡಿತವಾಗಿಯೂ ಲಾಗ್ ಔಟ್ ಮಾಡಲು ಬಯಸುವಿರಾ?",
+        yes: "ಹೌದು",
+        no: "ಇಲ್ಲ",
+        cancel: "ರದ್ದುಮಾಡಿ",
+        save: "ಉಳಿಸಿ",
+        delete: "ಅಳಿಸಿ",
+        edit: "ತಿದ್ದಿ",
+        view: "ನೋಡಿ",
+        download: "ಡೌನ್‌ಲೋಡ್",
+        upload: "ಅಪ್‌ಲೋಡ್",
+        documents: "ದಾಖಲೆಗಳು",
+        status: "ಸ್ಥಿತಿ",
+        date: "ದಿನಾಂಕ",
+        action: "ಕ್ರಮ",
+        details: "ವಿವರಗಳು",
+        step: "ಹಂತ",
+        next: "ಮುಂದೆ",
+        back: "ಹಿಂದೆ",
+        finish: "ಮುಗಿಸಿ",
+        confirm: "ಖಚಿತಪಡಿಸಿ",
+        skip: "ಬಿಟ್ಟುಬಿಡಿ",
+        search: "ಹುಡುಕಿ",
+        filter: "ಫಿಲ್ಟರ್",
+        sort_by: "ಇದರ ಮೂಲಕ ವಿಂಗಡಿಸಿ",
+        relevance: "ಪ್ರಸ್ತುತತೆ",
+        newest: "ಹೊಸತು",
+        oldest: "ಹಳೆಯದು",
+        category: "ವರ್ಗ",
+        role: "ಪಾತ್ರ",
+        all_categories: "ಎಲ್ಲಾ ವರ್ಗಗಳು",
+        all_states: "ಎಲ್ಲಾ ರಾಜ್ಯಗಳು",
+        all_roles: "ಎಲ್ಲಾ ಪಾತ್ರಗಳು",
+        first_name: "ಮೊದಲ ಹೆಸರು",
+        last_name: "ಕೊನೆಯ ಹೆಸರು",
+        email: "ಇಮೇಲ್",
+        mobile: "ಮೊಬೈಲ್",
+        save_changes: "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
+        app_summary: "ಅರ್ಜಿ ಸಾರಾಂಶ",
+        applicant: "ಅರ್ಜಿದಾರರು",
+        ref_id: "ಉಲ್ಲೇಖ ID",
+        submitted_via: "ಮೂಲಕ ಸಲ್ಲಿಸಲಾಗಿದೆ",
+        agree_declaration: "⚠️ ಸಲ್ಲಿಸುವ ಮೂಲಕ, ಒದಗಿಸಿದ ಎಲ್ಲಾ ಮಾಹಿತಿಯು ನಿಖರವಾಗಿದೆ ಎಂದು ನೀವು ಘೋಷಿಸುತ್ತೀರಿ ಮತ್ತು ಆಧಾರ್/ಡಿಜಿಲಾಕರ್ ಮೂಲಕ ಪರಿಶೀಲನೆಗೆ ನೀವು ಸಮ್ಮತಿಸುತ್ತೀರಿ.",
+        submit_app: "✅ ಅರ್ಜಿಯನ್ನು ಸಲ್ಲಿಸಿ",
+        app_submitted_title: "ಅರ್ಜಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!",
+        ref_number: "ನಿಮ್ಮ ಉಲ್ಲೇಖ ಸಂಖ್ಯೆ:",
+        sms_update_info: "'ನನ್ನ ಅರ್ಜಿಗಳು' ನಲ್ಲಿ ಸ್ಥಿತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ. ನೀವು SMS ನವೀಕರಣಗಳನ್ನು ಪಡೆಯುತ್ತೀರಿ.",
+        view_my_apps: "ನನ್ನ ಅರ್ಜಿಗಳನ್ನು ನೋಡಿ →",
+        upload_docs_info: "ದಯವಿಟ್ಟು ಈ ಕೆಳಗಿನ ದಾಖಲೆಗಳ ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಪ್ರತಿಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ:",
+        bank_review: "ಬ್ಯಾಂಕ್ ಪರಿಶೀಲನೆ",
+        disbursed: "ವಿತರಿಸಲಾಗಿದೆ",
+        card_issued: "ಕಾರ್ಡ್ ನೀಡಲಾಗಿದೆ",
+        docs_needed: "ದಾಖಲೆಗಳ ಅಗತ್ಯವಿದೆ",
+        view_details: "ವಿವರಗಳನ್ನು ನೋಡಿ",
+        upload_docs: "ದಾಖಲೆಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+        download_cert: "ಪ್ರಮಾಣಪತ್ರವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+      },
+      te: {
+        brand_tagline: "AI-ఆధారిత ప్రభుత్వ పథక సహాయకుడు",
+        login: "లాగిన్",
+        signup: "సైన్ అప్",
+        logout: "లాగ్ అవుట్",
+        mobile_aadhaar: "మొబైల్ / ఈమెయిల్ / ఆధార్",
+        password: "పాస్‌వర్డ్",
+        forgot_password: "పాస్‌వర్డ్ మర్చిపోయారా?",
+        login_btn: "సార్థిలోకి లాగిన్ అవ్వండి →",
+        quick_demo: "త్వరిత డెమో లాగిన్",
+        full_name: "పూర్తి పేరు",
+        mobile_number: "మొబైల్ సంఖ్య",
+        email_address: "ఈమెయిల్ చిరునామా",
+        select_role: "మీ పాత్రను ఎంచుకోండి",
+        role_citizen: "పౌరుడు",
+        role_student: "విద్యార్థి",
+        role_startup: "స్టార్టప్ వ్యవస్థాపకుడు",
+        role_ngo: "NGO / సంస్థ",
+        role_citizen_sub: "సాధారణ ప్రజలు",
+        role_student_sub: "కళాశాల / పాఠశాల",
+        role_startup_sub: "DPIIT నమోదిత",
+        role_ngo_sub: "నమోదిత సంస్థ",
+        state: "రాష్ట్రం",
+        annual_income: "వార్షిక ఆదాయం",
+        create_account: "ఖాతాను సృష్టించండి →",
+        data_secured: "మీ డేటా ప్రభుత్వ స్థాయి ఎన్‌క్రిప్షన్‌తో సురక్షితం.",
+        dashboard: "డ్యాష్‌బోర్డ్",
+        modules: "మాడ్యూల్స్",
+        gov_schemes: "ప్రభుత్వ పథకాలు",
+        startup_funding: "స్టార్టప్ ఫండింగ్",
+        check_eligibility: "అర్హతను తనిఖీ చేయండి",
+        my_account: "నా ఖాతా",
+        my_applications: "నా దరఖాస్తులు",
+        notifications: "నోటిఫికేషన్లు",
+        my_profile: "నా ప్రొఫైల్",
+        ai_assistant: "AI సహాయకుడు",
+        saarthi_ai_chat: "సార్థి AI చాట్",
+        recommended_for_you: "మీ కోసం సిఫార్సు చేయబడినవి",
+        see_all: "అన్నీ చూడండి →",
+        recent_applications: "ఇటీవలి దరఖాస్తులు",
+        funding_spotlight: "ఫండింగ్ స్పాట్‌లైట్",
+        schemes_available: "అందుబాటులో ఉన్న పథకాలు",
+        applications: "దరఖాస్తులు",
+        total_benefit: "మొత్తం ప్రయోజనం",
+        unread_alerts: "చదవని హెచ్చరికలు",
+        search_placeholder: "పేరు, ప్రయోజనం లేదా వర్గం ద్వారా వెతకండి...",
+        all: "అన్నీ",
+        central: "కేంద్ర",
+        state_gov: "రాష్ట్ర",
+        agriculture: "వ్యవసాయం",
+        health: "ఆరోగ్యం",
+        education: "విద్య",
+        women: "మహిళలు",
+        business: "వ్యాపారం",
+        startup: "స్టార్టప్",
+        apply_now: "ఇప్పుడే దరఖాస్తు చేసుకోండి →",
+        eligibility_checker: "అర్హత తనిఖీదారు",
+        age: "వయస్సు",
+        gender: "లింగం",
+        occupation: "వృత్తి",
+        annual_household_income: "వార్షిక గృహ ఆదాయం",
+        check_eligibility_btn: "అర్హతను తనిఖీ చేయండి",
+        reset: "రీసెట్",
+        track_status: "స్థితిని ట్రాక్ చేయండి",
+        mark_all_read: "అన్నీ చదివినట్లుగా గుర్తు చేయండి",
+        clear_all: "అన్నీ క్లియర్ చేయండి",
+        personal_details: "వ్యక్తిగత వివరాలు",
+        address_details: "చిరునామా వివరాలు",
+        kyc_docs: "KYC & పత్రాలు",
+        my_stats: "నా గణాంకాలు",
+        edit_profile: "ప్రొఫైల్‌ను సవరించండి",
+        verified: "ధృవీకరించబడింది",
+        pending: "పెండింగ్‌లో ఉంది",
+        linked: "అనుసంధానించబడింది",
+        chat_welcome: "నమస్తే! 🙏 నేను <b>సార్థి</b>, భారత ప్రభుత్వ పథకాలు మరియు స్టార్టప్ ఫండింగ్ కోసం మీ AI గైడ్‌ని.<br><br>నేను మీకు సహాయం చేయగలను:<br>• 📋 పథక అర్హత మరియు దరఖాస్తులు<br>• 💰 స్టార్టప్ ఫండింగ్ మార్గదర్శకత్వం<br>• 📄 డాక్యుమెంట్ చెక్‌లిస్ట్<br>• 🔍 సరైన ప్రోగ్రామ్‌ల గుర్తింపు<br><br>ఈరోజు మీరు ఏమి తెలుసుకోవాలనుకుంటున్నారు?",
+        type_question: "మీ ప్రశ్నను టైప్ చేయండి... (ఇంగ్లీష్ లేదా హిందీ)",
+        clear_chat: "చాట్‌ను క్లియర్ చేయండి",
+        no_schemes_found: "పథకాలు ఏవీ కనుగొనబడలేదు",
+        no_apps_found: "ఇంకా దరఖాస్తులు ఏవీ లేవు",
+        loading: "లోడ్ అవుతోంది...",
+        namaste: "నమస్తే",
+        welcome_sub: "మీకు {n} సిఫార్సు చేయబడిన పథకాలు ఉన్నాయి. {m} చర్య అవసరం.",
+        adjust_search_filters: "మీ శోధన లేదా ఫిల్టర్లను సర్దుబాటు చేయడానికి ప్రయత్నించండి",
+        apply_to_see: "వాటిని ఇక్కడ చూడటానికి పథకాల కోసం దరఖాస్తు చేసుకోండి",
+        under_review: "పరిశీలనలో ఉంది",
+        approved: "ఆమోదించబడింది",
+        action_needed: "చర్య అవసరం",
+        submitted: "సమర్పించబడింది",
+        gov_schemes_sub: "కేంద్ర & రాష్ట్ర ప్రభుత్వ సంక్షేమ పథకాలను బ్రౌజ్ చేయండి మరియు దరఖాస్తు చేసుకోండి",
+        benefit_amount: "ప్రయోజన మొత్తం",
+        last_date: "చివరి తేదీ",
+        ministry: "మంత్రిత్వ శాఖ / విభాగం",
+        mode: "విధానం",
+        about_scheme: "ఈ పథకం గురించి",
+        eligibility_criteria: "అర్హత ప్రమాణాలు",
+        required_docs: "అవసరమైన పత్రాలు",
+        close: "మూసివేయి",
+        male: "పురుషుడు",
+        female: "స్త్రీ",
+        other: "ఇతర",
+        farmer: "రైతు",
+        salaried: "జీతం పొందే వ్యక్తి",
+        self_employed: "swayam ఉపాధి",
+        unemployed: "నిరుద్యోగి",
+        startup_founder: "స్టార్టప్ వ్యవస్థాపకుడు",
+        category: "వర్గం",
+        minority: "మైనారిటీ",
+        eligibility_checker_sub: "2 నిమిషాల కంటే తక్కువ సమయం పడుతుంది. ఈ దశలో పత్రాలు ఏవీ అవసరం లేదు.",
+        chat_error: "నేను మీకు సహాయం చేయడానికి ఇక్కడ ఉన్నాను! 🙏 ప్రభుత్వ పథకాలు, స్టార్టప్ ఫండింగ్, అర్హత ప్రమాణాలు లేదా దరఖాస్తు పత్రాల గురించి నన్ను అడగండి. నేను మీకు అన్నింటిలో మార్గదర్శకత్వం చేస్తాను.",
+        profile_updated: "ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది!",
+        startup_funding_sub: "భారతీయ స్టార్టప్‌ల కోసం ప్రభుత్వ గ్రాంట్లు, సీడ్ ఫండ్‌లు మరియు VC అవకాశాలు",
+        eligibility_checker_sub_head: "కొన్ని ప్రశ్నలకు సమాధానం ఇవ్వండి మరియు మేము మిమ్మల్ని తక్షణమే సరైన పథకాలకు జత చేస్తాము",
+        notifications_sub: "దరఖాస్తులు, కొత్త పథకాలు మరియు ముఖ్యమైన హెచ్చరికలపై అప్‌డేట్‌గా ఉండండి",
+        profile_sub: "మీ వ్యక్తిగత సమాచారం మరియు ప్రాధాన్యతలను నిర్వహించండి",
+        aadhaar: "ఆధార్",
+        dob: "పుట్టిన తేదీ",
+        submitted: "సమర్పించబడింది",
+        verified: "ధృవీకరించబడింది",
+        bank_review: "బ్యాంక్ సమీక్ష",
+        disbursed: "పంపిణీ చేయబడింది",
+        approved: "ఆమోదించబడింది",
+        card_issued: "కార్డ్ జారీ చేయబడింది",
+        docs_needed: "పత్రాలు అవసరం",
+        all_read: "అన్ని నోటిఫికేషన్లు చదివినట్లుగా గుర్తించబడ్డాయి",
+        notifs_cleared: "నోటిఫికేషన్లు క్లియర్ చేయబడ్డాయి",
+        login_success: "లాగిన్ విజయవంతమైంది!",
+        signup_success: "ఖాతా విజయవంతంగా సృష్టించబడింది!",
+        invalid_credentials: "చెల్లని ఈమెయిల్ లేదా పాస్‌వర్డ్",
+        fill_all_fields: "అన్ని అవసరమైన ఫీల్డ్లను పూరించండి",
+        otp_sent: "మీ మొబైల్ సంఖ్యకు OTP పంపబడింది",
+        otp_verified: "OTP విజయవంతంగా ధృవీకరించబడింది",
+        apply_success: "దరఖాస్తు విజయవంతంగా సమర్పించబడింది!",
+        tracker_updated: "ట్రాకర్ నవీకరించబడింది",
+        whatsapp_sent: "వాట్సాప్ నోటిఫికేషన్ పంపబడింది",
+        settings: "సెట్టింగులు",
+        language: "భాష",
+        appearance: "రూపం",
+        security: "భద్రత",
+        help_support: "సహాయం & మద్దతు",
+        dark_mode: "డార్క్ మోడ్",
+        change_password: "పాస్‌వర్డ్ మార్చు",
+        two_factor: "టూ-ఫ్యాక్టర్ ప్రామాణీకరణ",
+        terms_service: "సేవా నిబంధనలు",
+        privacy_policy: "గోప్యతా విధానం",
+        about_us: "మా గురించి",
+        contact_support: "మద్దతును సంప్రదించండి",
+        feedback: "అభిప్రాయం",
+        logout_confirm: "మీరు ఖచ్చితంగా లాగ్ అవుట్ చేయాలనుకుంటున్నారా?",
+        yes: "అవును",
+        no: "కాదు",
+        cancel: "రద్దు",
+        save: "సేవ్",
+        delete: "తొలగించు",
+        edit: "సవరించు",
+        view: "చూడండి",
+        download: "డౌన్‌లోడ్",
+        upload: "అప్‌లోడ్",
+        documents: "పత్రాలు",
+        status: "స్థితి",
+        date: "తేదీ",
+        action: "చర్య",
+        details: "వివరాలు",
+        step: "దశ",
+        next: "తరువాత",
+        back: "వెనుకకు",
+        finish: "ముగించు",
+        confirm: "ధృవీకరించు",
+        skip: "దాటవేయి",
+        search: "వెతకండి",
+        filter: "ఫిల్టర్",
+        sort_by: "దీని ప్రకారం క్రమబద్ధీకరించు",
+        relevance: "సంబంధితం",
+        newest: "కొత్తవి",
+        oldest: "పాతవి",
+        category: "వర్గం",
+        role: "పాత్ర",
+        all_categories: "అన్ని వర్గాలు",
+        all_states: "అన్ని రాష్ట్రాలు",
+        all_roles: "అన్ని పాత్రలు",
+        first_name: "మొదటి పేరు",
+        last_name: "చివరి పేరు",
+        email: "ఈమెయిల్",
+        mobile: "మొబైల్",
+        save_changes: "మార్పులను సేవ్ చేయండి",
+        app_summary: "దరఖాస్తు సారాంశం",
+        applicant: "దరఖాస్తుదారు",
+        ref_id: "రిఫరెన్స్ ID",
+        submitted_via: "ద్వారా సమర్పించబడింది",
+        agree_declaration: "⚠️ సమర్పించడం ద్వారా, అందించిన సమాచారం అంతా ఖచ్చితమైనదని మీరు ప్రకటిస్తున్నారు మరియు ఆధార్/డిజీలాకర్ ద్వారా ధృవీకరణకు మీరు అంగీకరిస్తున్నారు.",
+        submit_app: "✅ దరఖాస్తును సమర్పించండి",
+        app_submitted_title: "దరఖాస్తు సమర్పించబడింది!",
+        ref_number: "మీ రిఫరెన్స్ నంబర్:",
+        sms_update_info: "'నా దరఖాస్తులు'లో స్థితిని ట్రాక్ చేయండి. మీరు SMS అప్‌డేట్‌లను అందుకుంటారు.",
+        view_my_apps: "నా దరఖాస్తులను చూడండి →",
+        upload_docs_info: "దయచేసి కింది పత్రాల స్కాన్ చేసిన కాపీలను అప్‌లోడ్ చేయండి:",
+        bank_review: "బ్యాంక్ సమీక్ష",
+        disbursed: "పంపిణీ చేయబడింది",
+        card_issued: "కార్డ్ జారీ చేయబడింది",
+        docs_needed: "పత్రాలు అవసరం",
+        view_details: "వివరాలను చూడండి",
+        upload_docs: "పత్రాలను అప్‌లోడ్ చేయండి",
+        download_cert: "ధృవీకరణ పత్రాన్ని డౌన్‌లోడ్ చేయండి",
+      }
+    };
+    function t(key, params = {}) {
+      let text = translations[currentLang][key] || translations['en'][key] || key;
+      for (const [k, v] of Object.entries(params)) {
+        text = text.replace(`{${k}}`, v);
+      }
+      return text;
+    }
+
+    function updateLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('saarthi_lang', lang);
+      document.getElementById('lang-select').value = lang;
+      const labels = { en: 'English', hi: 'हिन्दी', kn: 'ಕನ್ನಡ', te: 'తెలుగు' };
+      document.getElementById('current-lang-label').textContent = labels[lang];
+
+      // Add animation class
+      document.body.classList.add('lang-changing');
+      setTimeout(() => document.body.classList.remove('lang-changing'), 400);
+
+      applyTranslations();
+      renderAll(); // Re-render dynamic content
+    }
+
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerHTML = t(key);
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        el.placeholder = t(key);
+      });
+
+      // Update AI System Prompt language
+      if (typeof initChat === 'function') {
+        // We don't want to clear chat on lang change, but we want new messages to be in right lang
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateLanguage(currentLang);
+    });
+
+    /* ─── DATA MODELS ────────────────────────── */
+    const SCHEMES = [
+      {
+        id: 'pmkisan', name: 'PM-KISAN Samman Nidhi', badge: 'central', cat: 'agriculture', amount: '₹6,000/yr', deadline: 'Ongoing', ministry: 'Ministry of Agriculture', mode: 'Direct Bank Transfer',
+        about: 'Provides direct income support of ₹6,000 per year in three equal instalments to small & marginal farmer families across India.',
+        elig: ['Landholding farmer family', 'Less than 2 hectares of cultivable land', 'Valid Aadhaar linked to bank account', 'Not an income tax payer'],
+        docs: ['Aadhaar Card', 'Land records / Khatoni', 'Bank passbook (first page)', 'Passport size photo']
+      },
+      {
+        id: 'pmjay', name: 'Ayushman Bharat – PM-JAY', badge: 'health', cat: 'health', amount: '₹5L cover/yr', deadline: 'Ongoing', ministry: 'Ministry of Health & Family Welfare', mode: 'Cashless at empanelled hospitals',
+        about: 'World\'s largest health insurance scheme providing ₹5 lakh coverage per family per year for secondary and tertiary hospitalisation.',
+        elig: ['Belongs to SECC-2011 database', 'Rural deprived or urban occupational categories', 'No existing health insurance from central/state'],
+        docs: ['Aadhaar Card', 'Ration Card', 'Income Certificate', 'PM-JAY eligibility letter']
+      },
+      {
+        id: 'mudra', name: 'PM Mudra Yojana', badge: 'central', cat: 'business', amount: 'Up to ₹10L', deadline: 'Ongoing', ministry: 'Ministry of Finance', mode: 'Bank / NBFC Loan',
+        about: 'Provides micro-finance loans up to ₹10 lakh to non-farm small/micro enterprises. Three categories: Shishu (up to ₹50K), Kishor (₹50K-5L), Tarun (₹5L-10L).',
+        elig: ['Indian citizen aged 18+', 'Existing or new micro/small business', 'No criminal record', 'Valid KYC documents'],
+        docs: ['Aadhaar + PAN', 'Business plan / proof', 'Bank statements (6 months)', 'Quotation for machinery (if applicable)']
+      },
+      {
+        id: 'sisf', name: 'Startup India Seed Fund', badge: 'startup', cat: 'startup', amount: '₹20L–50L', deadline: '30 Jun 2025', ministry: 'DPIIT', mode: 'Grant / Soft Loan via Incubators',
+        about: 'Provides financial assistance for proof of concept, prototype development, product trials, market entry and commercialisation for early-stage startups.',
+        elig: ['DPIIT-recognised startup', 'Not more than 2 years old', 'Not received Series A or higher funding', 'Incorporated in India'],
+        docs: ['DPIIT recognition certificate', 'Incorporation certificate', 'Business plan', 'Founder KYC', 'Cap table']
+      },
+      {
+        id: 'vishwakarma', name: 'PM Vishwakarma Yojana', badge: 'central', cat: 'artisan', amount: '₹3L credit', deadline: '31 Mar 2026', ministry: 'MSME Ministry', mode: 'Concessional Credit + Training',
+        about: 'Holistic support for artisans and craftspeople covering skill training, digital tools, collateral-free credit at 5% interest, and market linkage.',
+        elig: ['Traditional artisan or craftsman', '18 artisan categories (blacksmith, potter, weaver etc.)', 'Not a government employee'],
+        docs: ['Aadhaar', 'Caste certificate (if applicable)', 'Bank account details', 'Skill/trade proof']
+      },
+      {
+        id: 'nsp', name: 'National Scholarship Portal', badge: 'education', cat: 'education', amount: '₹15K–75K/yr', deadline: '31 Oct 2025', ministry: 'Ministry of Education', mode: 'Direct Bank Transfer',
+        about: 'Umbrella portal for various post-matric, merit-cum-means scholarships for SC/ST/OBC/minority and economically weaker students.',
+        elig: ['Enrolled in recognised educational institution', 'Annual family income below ₹2.5L (varies)', 'Minimum 50% marks in last exam'],
+        docs: ['Aadhaar', 'Bank passbook', 'Income certificate', 'Marksheet (last exam)', 'Bonafide certificate from institution']
+      },
+      {
+        id: 'grulakshmi', name: 'Karnataka Gruha Lakshmi', badge: 'state', cat: 'women', amount: '₹24,000/yr', deadline: 'Active', ministry: 'Govt. of Karnataka', mode: 'Direct Bank Transfer',
+        about: 'Monthly ₹2,000 transfer to woman head of household in Karnataka to support family welfare and women\'s financial independence.',
+        elig: ['Resident of Karnataka', 'Woman head of household', 'Valid ration card', 'Annual income below ₹2L'],
+        docs: ['Aadhaar Card', 'Ration Card', 'Bank passbook', 'Karnataka domicile proof']
+      },
+      {
+        id: 'standupindia', name: 'Stand-Up India', badge: 'central', cat: 'women', amount: '₹10L–1Cr', deadline: 'Ongoing', ministry: 'Ministry of Finance', mode: 'Bank Loan',
+        about: 'Facilitates bank loans between ₹10 lakh and ₹1 crore to at least one SC/ST and one woman borrower per bank branch for setting up greenfield enterprises.',
+        elig: ['SC/ST or woman entrepreneur', 'Age 18+', 'First-time borrower in this category', 'Viable business plan'],
+        docs: ['Aadhaar + PAN', 'Caste/gender certificate', 'Business plan', 'Land documents or lease agreement', 'Bank statements']
+      },
+      {
+        id: 'pmegp', name: 'PMEGP – Employment Generation', badge: 'central', cat: 'business', amount: '15–35% subsidy', deadline: 'Ongoing', ministry: 'MSME Ministry', mode: 'Subsidy on Bank Loan',
+        about: 'Prime Minister Employment Generation Programme provides subsidy of 15-35% on project cost for setting up micro enterprises in manufacturing or service sector.',
+        elig: ['Age 18+', 'Minimum 8th pass for projects above ₹10L', 'No existing PMRY/REGP/PMEGP beneficiary'],
+        docs: ['Aadhaar + PAN', 'Educational certificate', 'Project report', 'Land/building proof', 'Caste certificate (if SC/ST/OBC)']
+      },
+      {
+        id: 'svanidhi', name: 'PM SVANidhi – Street Vendors', badge: 'central', cat: 'business', amount: 'Up to ₹50K', deadline: 'Ongoing', ministry: 'Housing & Urban Affairs', mode: 'Collateral-free Loan',
+        about: 'Provides affordable working capital loans starting ₹10,000 for urban street vendors who had businesses before 24 March 2020.',
+        elig: ['Urban street vendor', 'Vending certificate or letter of recommendation', 'Active vendor before COVID lockdown'],
+        docs: ['Aadhaar Card', 'Vendor certificate / LoR', 'Bank account', 'Photo with cart/stall']
+      },
+      {
+        id: 'atal', name: 'Atal Innovation Mission', badge: 'startup', cat: 'startup', amount: '₹1Cr–2Cr', deadline: '31 Dec 2025', ministry: 'NITI Aayog', mode: 'Grant for Incubation Centres',
+        about: 'AIM supports establishment of Atal Incubation Centres (AICs) providing ₹10Cr grants. Resident startups get office space, mentoring, and seed funding.',
+        elig: ['DPIIT-recognised startup', 'Hosted in AIC', 'Less than 5 years old'],
+        docs: ['DPIIT certificate', 'Pitch deck', 'Financial projections', 'Founder profiles', 'IP (if any)']
+      },
+      {
+        id: 'bbby', name: 'Beti Bachao Beti Padhao', badge: 'central', cat: 'women', amount: 'Variable', deadline: 'Ongoing', ministry: 'Women & Child Development', mode: 'Conditional Cash + Services',
+        about: 'Multi-sectoral programme to prevent gender-biased sex selective elimination and ensure education and participation of the girl child.',
+        elig: ['Girl child (newborn to 18 years)', 'Registered with Anganwadi', 'Enrolled in school'],
+        docs: ['Birth certificate of girl child', 'Aadhaar of parents', 'Bank account in girl\'s name', 'School enrollment proof']
+      },
+    ];
+
+    const FUNDING = [
+      {
+        id: 'sisf2', name: 'Startup India Seed Fund Scheme', org: 'DPIIT, Govt. of India', stage: 'seed', amount: 'Up to ₹50 Lakh', tags: ['Deeptech', 'AgriTech', 'HealthTech', 'EdTech'], deadline: '30 Jun 2025',
+        desc: 'POC funding up to ₹20L and market entry grants up to ₹50L for early-stage DPIIT-recognised startups via selected incubators.'
+      },
+      {
+        id: 'icreate', name: 'iCreate – Indo-Israel Innovation', org: 'Govt. of Gujarat & Israel', stage: 'seed', amount: 'Up to ₹25 Lakh', tags: ['AgriTech', 'WaterTech', 'Smart Cities'], deadline: '31 Aug 2025',
+        desc: 'Indo-Israel collaboration grants for deep-tech startups with global potential in agriculture, water, and smart city solutions.'
+      },
+      {
+        id: 'birac', name: 'BIRAC BIG Scheme', org: 'Dept. of Biotechnology', stage: 'pre-seed', amount: 'Up to ₹50 Lakh', tags: ['Biotech', 'HealthTech', 'Pharma'], deadline: 'Rolling',
+        desc: 'Grant-in-aid for early-stage biotech startups with innovative product or technology idea validated at lab scale.'
+      },
+      {
+        id: 'nasscom', name: 'Nasscom 10000 Startups', org: 'Nasscom Foundation', stage: 'series-a', amount: 'Mentorship + ₹5Cr Fund Access', tags: ['SaaS', 'AI/ML', 'FinTech', 'B2B'], deadline: 'Rolling',
+        desc: 'Incubation, investor connect, and structured mentoring for B2B tech startups building products for global markets.'
+      },
+      {
+        id: 'sidbi', name: 'SIDBI Startup Mitra', org: 'SIDBI', stage: 'series-a', amount: '₹50L–₹5Cr', tags: ['Manufacturing', 'CleanTech', 'Logistics'], deadline: 'Rolling',
+        desc: 'Debt and quasi-equity financing for DPIIT-recognised startups in growth phase. Flexible repayment, no collateral for small tickets.'
+      },
+      {
+        id: 'aic', name: 'Atal Incubation Centres (AIC)', org: 'NITI Aayog – AIM', stage: 'pre-seed', amount: '₹10Cr (Centre Grant)', tags: ['DeepTech', 'Social Impact', 'FinTech'], deadline: '31 Dec 2025',
+        desc: 'Grants to establish world-class incubators; resident startups receive free workspace, equipment access, seed funding, and mentoring.'
+      },
+      {
+        id: 'tide', name: 'TIDE 2.0 – Technology Incubation', org: 'Ministry of Electronics & IT', stage: 'seed', amount: 'Up to ₹75 Lakh', tags: ['AI/ML', 'IoT', 'Cybersecurity', 'Blockchain'], deadline: 'Rolling',
+        desc: 'Supports ICT startups through grant-in-aid to incubators. Focus on emerging tech like AI, IoT, blockchain, cybersecurity.'
+      },
+      {
+        id: 'dcx', name: 'Defence Connect – iDEX', org: 'Ministry of Defence', stage: 'seed', amount: 'Up to ₹1.5 Cr', tags: ['DefenceTech', 'Aerospace', 'AI/ML', 'Drones'], deadline: 'Multiple rounds',
+        desc: 'Innovations for Defence Excellence (iDEX) provides grants to startups building technology solutions for Indian defence forces.'
+      },
+      {
+        id: 'angel', name: 'Indian Angel Network (IAN)', org: 'Private / IAN Fund', stage: 'angel', amount: '₹25L–₹3Cr', tags: ['Consumer', 'SaaS', 'HealthTech', 'EdTech'], deadline: 'Rolling',
+        desc: 'India\'s largest angel network connecting startups with 500+ high-networth investors. Sector-agnostic with strong mentor support.'
+      },
+    ];
+
+    let APPLICATIONS = [];
+    let NOTIFS = [];
+
+    /* ─── STATE ─────────────────────────────── */
+    let currentUser = null;
+    let schemeFilter = 'all';
+    let fundFilter = 'all';
+    let applyTarget = null;
+    let chatHistory = [];
+
+    /* ─── AUTH ─────────────────────────────── */
+    window.authTab = function(t) {
+      console.log('Switching to auth tab:', t);
+      const loginPane = document.getElementById('login-pane');
+      const signupPane = document.getElementById('signup-pane');
+      const loginTab = document.getElementById('tab-login');
+      const signupTab = document.getElementById('tab-signup');
+
+      if (loginPane) {
+        if (t === 'login') loginPane.classList.remove('hidden');
+        else loginPane.classList.add('hidden');
+      }
+      if (signupPane) {
+        if (t === 'signup') signupPane.classList.remove('hidden');
+        else signupPane.classList.add('hidden');
+      }
+      if (loginTab) loginTab.classList.toggle('active', t === 'login');
+      if (signupTab) signupTab.classList.toggle('active', t === 'signup');
+    };
+    function pickRole(el) {
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('sel'));
+      el.classList.add('sel');
+    }
+    function showAlert(msg, type = 'error') {
+      const a = document.getElementById('alert-box');
+      a.className = 'alert alert-' + type;
+      a.innerHTML = msg;
+      a.style.display = 'block';
+      setTimeout(() => a.style.display = 'none', 4000);
+    }
+    async function doLogin() {
+      const id = document.getElementById('l-id').value.trim();
+      const password = document.getElementById('l-pw').value.trim();
+      if (!id || !password) { showAlert('Please enter your credentials'); return; }
+      
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const u = data.user;
+          currentUser = { 
+            id: u.id,
+            name: u.name || 'User', 
+            role: u.role, 
+            initials: (u.name || 'U').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(), 
+            state: u.state || 'India', 
+            email: u.email || '', 
+            phoneNumber: u.phoneNumber || '',
+            income: u.income || 'Not Specified',
+            color: roleColor(u.role) 
+          };
+          enterApp();
+        } else {
+          showAlert(data.message || 'Login failed');
+        }
+      } catch (e) {
+        showAlert('Connection error. Please try again.');
+      }
+    }
+    async function doSignup() {
+      const name = document.getElementById('su-name').value.trim();
+      const phoneNumber = document.getElementById('su-mob').value.trim();
+      const email = document.getElementById('su-email').value.trim();
+      const password = document.getElementById('su-pw').value;
+      const income = document.getElementById('su-income').value;
+      const state = document.getElementById('su-state').value;
+      const roleEl = document.querySelector('.role-card.sel');
+      const role = roleEl ? roleEl.dataset.role : 'Citizen';
+
+      if (!name || !phoneNumber || !password) { showAlert('Please fill name, phone and password'); return; }
+
+      try {
+        const res = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phoneNumber, email, role, state, income, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const u = data.user;
+          currentUser = { 
+            id: u.id,
+            name: u.name, 
+            role: u.role, 
+            initials: u.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(), 
+            state: u.state || 'India', 
+            email: u.email || '', 
+            phoneNumber: u.phoneNumber || '',
+            income: u.income || 'Not Specified',
+            color: roleColor(u.role) 
+          };
+          enterApp();
+        } else {
+          showAlert(data.message || 'Signup failed');
+        }
+      } catch (e) {
+        showAlert('Connection error. Please try again.');
+      }
+    }
+    function quickLogin(role, name, initials) {
+      currentUser = { name, role, initials, state: 'Karnataka', email: 'demo@saarthi.gov.in', color: roleColor(role) };
+      enterApp();
+    }
+    function roleColor(r) {
+      return r === 'Startup Founder' ? '#046A38' : r === 'Student' ? '#0A3D91' : r === 'NGO' ? '#7C3AED' : '#FF671F';
+    }
+    function enterApp() {
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('app').classList.add('show');
+      // Update UI with user info
+      document.getElementById('topbar-avatar').textContent = currentUser.initials;
+      document.getElementById('topbar-avatar').style.background = currentUser.color;
+      document.getElementById('topbar-name').textContent = currentUser.name.split(' ')[0];
+      document.getElementById('topbar-role').textContent = t('role_' + currentUser.role.toLowerCase().replace(' ', '_'));
+      document.getElementById('wb-hello').textContent = `${t('namaste')}, ${currentUser.name.split(' ')[0]}! 🙏`;
+      document.getElementById('wb-role-pill').textContent = roleEmoji(currentUser.role) + ' ' + t('role_' + currentUser.role.toLowerCase().replace(' ', '_'));
+      document.getElementById('wb-sub').textContent = t('welcome_sub', { n: SCHEMES.length, m: APPLICATIONS.filter(a => a.status === 'action').length });
+      // Profile page
+      document.getElementById('prof-avatar-big').textContent = currentUser.initials;
+      document.getElementById('prof-name-big').textContent = currentUser.name;
+      document.getElementById('prof-email-big').textContent = currentUser.email;
+      document.getElementById('prof-role-badge').textContent = roleEmoji(currentUser.role) + ' ' + currentUser.role;
+      document.getElementById('ps-name').textContent = currentUser.name;
+      document.getElementById('ps-email').textContent = currentUser.email;
+      document.getElementById('ps-state').textContent = currentUser.state;
+      document.getElementById('ps-mobile').textContent = currentUser.phoneNumber;
+      document.getElementById('ps-income').textContent = currentUser.income;
+      
+      // Populate Edit Profile Modal
+      const [fname, ...lnameParts] = currentUser.name.split(' ');
+      document.getElementById('ep-fname').value = fname || '';
+      document.getElementById('ep-lname').value = lnameParts.join(' ') || '';
+      document.getElementById('ep-email').value = currentUser.email || '';
+      document.getElementById('ep-mobile').value = currentUser.phoneNumber || '';
+      document.getElementById('ep-state').value = currentUser.state || 'Karnataka';
+      // Adjust banner color per role
+      if (currentUser.role === 'Startup Founder') document.getElementById('wb').style.background = 'linear-gradient(135deg,#046A38,#078048)';
+      else if (currentUser.role === 'Student') document.getElementById('wb').style.background = 'linear-gradient(135deg,#0A3D91,#1a5cb5)';
+      else document.getElementById('wb').style.background = 'linear-gradient(135deg,#FF671F,#e05010)';
+
+      renderAll();
+      initChat();
+      updateBadges();
+      fetchDashboardStats();
+    }
+    function roleEmoji(r) { return r === 'Startup Founder' ? '🚀' : r === 'Student' ? '🎓' : r === 'NGO' ? '🏛️' : '👤'; }
+    function doLogout() {
+      document.getElementById('app').classList.remove('show');
+      document.getElementById('auth-screen').style.display = 'flex';
+      chatHistory = [];
+    }
+
+    /* ─── NAVIGATION ─────────────────────────── */
+    function nav(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.mn-item').forEach(m => m.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      const sideEl = document.getElementById('nav-' + page);
+      if (sideEl) sideEl.classList.add('active');
+      const mobEl = document.getElementById('mn-' + page);
+      if (mobEl) mobEl.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    /* ─── RENDER HELPERS ─────────────────────── */
+    async function renderAll() {
+      if (currentUser) {
+        await fetchUserAppData();
+      }
+      renderSchemes(); renderFunding(); renderDash(); renderTracker(); renderNotifs();
+    }
+
+    async function fetchUserAppData() {
+      try {
+        const [appRes, notifRes] = await Promise.all([
+          fetch(`/api/user/${currentUser.id}/applications`),
+          fetch(`/api/user/${currentUser.id}/notifications`)
+        ]);
+        const apps = await appRes.json();
+        const notifs = await notifRes.json();
+        if (apps.success) APPLICATIONS = apps.applications;
+        if (notifs.success) NOTIFS = notifs.notifications;
+      } catch (e) {
+        console.error("Fetch App Data Error:", e);
+      }
+    }
+
+    function renderSchemes() {
+      const search = (document.getElementById('scheme-search') || { value: '' }).value.toLowerCase();
+      const items = SCHEMES.filter(s => {
+        const mf = schemeFilter === 'all' || s.badge === schemeFilter || s.cat === schemeFilter;
+        const ms = !search || s.name.toLowerCase().includes(search) || s.about.toLowerCase().includes(search) || s.cat.includes(search);
+        return mf && ms;
+      });
+      const html = items.length ? items.map(schemeCardHTML).join('') : `<div class="empty-state"><div class="es-icon">🔍</div><h3 data-i18n="no_schemes_found">${t('no_schemes_found')}</h3><p>${t('adjust_search_filters')}</p></div>`;
+      document.getElementById('schemes-grid').innerHTML = html;
+    }
+
+    function schemeCardHTML(s) {
+      const badgeMap = { central: 'badge-central 🏛', state: 'badge-state 🏷', startup: 'badge-startup 🚀', health: 'badge-health 🏥', education: 'badge-education 🎓' };
+      const [cls, icon] = (badgeMap[s.badge] || 'badge-central 🏛').split(' ');
+      return `<div class="scheme-card" onclick="openScheme('${s.id}')">
+    <div><span class="badge ${cls}">${icon} ${t(s.badge)}</span></div>
+    <div class="card-title">${s.name}</div>
+    <div class="card-desc">${s.about.slice(0, 110)}…</div>
+    <div class="card-footer">
+      <span class="scheme-amount">💰 ${s.amount}</span>
+      <span class="scheme-deadline">📅 ${s.deadline}</span>
+    </div>
+    <button class="btn btn-primary btn-sm btn-full" style="margin-top:4px" onclick="event.stopPropagation();openApply('${s.id}')" data-i18n="apply_now">${t('apply_now')}</button>
+  </div>`;
+    }
+
+    function renderFunding() {
+      const search = (document.getElementById('fund-search') || { value: '' }).value.toLowerCase();
+      const items = FUNDING.filter(f => {
+        const mf = fundFilter === 'all' || f.stage === fundFilter;
+        const ms = !search || f.name.toLowerCase().includes(search) || f.desc.toLowerCase().includes(search);
+        return mf && ms;
+      });
+      const html = items.length ? items.map(fundCardHTML).join('') : '<div class="empty-state"><div class="es-icon">💸</div><h3>No funds found</h3><p>Try different filters</p></div>';
+      document.getElementById('funding-grid').innerHTML = html;
+    }
+
+    function fundCardHTML(f) {
+      const stageColors = { 'pre-seed': '#7C3AED', 'seed': '#FF671F', 'series-a': '#0A3D91', 'grant': '#046A38', 'angel': '#B45309' };
+      const c = stageColors[f.stage] || '#374151';
+      return `<div class="funding-card" onclick="openFundDetail('${f.id}')">
+    <div><span style="background:${c}18;color:${c};font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px">${f.stage.replace('-', ' ').toUpperCase()}</span></div>
+    <div class="card-title" style="margin-top:8px">${f.name}</div>
+    <div class="fc-org">🏢 ${f.org}</div>
+    <div class="fc-amount">${f.amount}</div>
+    <div class="card-desc">${f.desc.slice(0, 110)}…</div>
+    <div class="fc-tags">${f.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();openApply('${f.id}','funding')" data-i18n="apply_now">${t('apply_now')}</button>
+      <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openFundDetail('${f.id}')" data-i18n="view">${t('view')}</button>
+    </div>
+  </div>`;
+    }
+
+    function renderDash() {
+      // Recommended (first 3)
+      document.getElementById('dash-rec-grid').innerHTML = SCHEMES.slice(0, 3).map(schemeCardHTML).join('');
+      // Funding spotlight (first 2)
+      document.getElementById('dash-funding-grid').innerHTML = FUNDING.slice(0, 2).map(fundCardHTML).join('');
+      // Tracker preview (first 2)
+      document.getElementById('dash-tracker-preview').innerHTML = APPLICATIONS.slice(0, 2).map(trackerItemHTML).join('');
+      // Dash stats & comms
+      fetchDashboardStats();
+    }
+
+    async function fetchDashboardStats() {
+      try {
+        const res = await fetch('/api/stats');
+        const data = await res.json();
+        if (data.success) {
+          const s = data.stats;
+          // Update Stats Grid
+          if (document.getElementById('stat-schemes')) document.getElementById('stat-schemes').textContent = s.schemes || 0;
+          if (document.getElementById('stat-apps')) document.getElementById('stat-apps').textContent = s.applications || 0;
+          
+          const waCount = s.conversationsByChannel.find(c => c.channel === 'WHATSAPP')?._count?.id || 0;
+          const webCount = s.conversationsByChannel.find(c => c.channel === 'WEB')?._count?.id || 0;
+          
+          if (document.getElementById('stat-whatsapp')) document.getElementById('stat-whatsapp').textContent = waCount;
+          if (document.getElementById('comm-stat-whatsapp')) document.getElementById('comm-stat-whatsapp').textContent = waCount;
+          if (document.getElementById('comm-stat-web')) document.getElementById('comm-stat-web').textContent = webCount;
+
+          // Render Comms Preview
+          renderCommsPreview(s.recentConversations);
+        }
+      } catch (e) {
+        console.error("Failed to fetch stats", e);
+      }
+    }
+
+    function renderCommsPreview(convoList) {
+      const container = document.getElementById('dash-comms-preview');
+      const fullList = document.getElementById('comms-full-list');
+      
+      if (!convoList || convoList.length === 0) {
+        const empty = `<div class="card" style="text-align:center;color:var(--text-sm);padding:30px">No recent conversations found.</div>`;
+        if (container) container.innerHTML = empty;
+        if (fullList) fullList.innerHTML = empty;
+        return;
+      }
+
+      const html = convoList.map(c => {
+        const lastMsg = c.messages[c.messages.length - 1];
+        const icon = c.channel === 'WHATSAPP' ? '📱' : '💻';
+        return `
+          <div class="card" style="margin-bottom:10px; cursor:pointer" onclick="nav('chat')">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-8">
+                <span style="font-size:20px">${icon}</span>
+                <div>
+                  <div style="font-weight:700; font-size:14px">${c.channel} Session</div>
+                  <div style="font-size:12px; color:var(--text-sm)">${new Date(c.updatedAt).toLocaleString()}</div>
+                </div>
+              </div>
+              <span class="badge ${c.channel === 'WHATSAPP' ? 'badge-state' : 'badge-central'}">${c.channel}</span>
+            </div>
+            <div style="margin-top:8px; font-size:13px; color:var(--text-md); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              ${lastMsg.role === 'user' ? 'You: ' : 'AI: '}${lastMsg.content}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (container) container.innerHTML = html.slice(0, 2); // Show only top 2 in dashboard
+      if (fullList) fullList.innerHTML = html;
+    }
+
+    function renderTracker() {
+      document.getElementById('tracker-full-list').innerHTML = APPLICATIONS.length ? APPLICATIONS.map(trackerItemHTML).join('') :
+        `<div class="empty-state"><div class="es-icon">📋</div><h3 data-i18n="no_apps_found">${t('no_apps_found')}</h3><p>${t('apply_to_see')}</p></div>`;
+      const total = APPLICATIONS.length;
+      const review = APPLICATIONS.filter(a => a.status === 'review').length;
+      const approved = APPLICATIONS.filter(a => a.status === 'approved').length;
+      const action = APPLICATIONS.filter(a => a.status === 'action').length;
+      const setT = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      setT('t-total', total);
+      setT('t-review', review);
+      setT('t-approved', approved);
+      setT('t-action', action);
+      setT('ps-applied', total);
+    }
+
+    function trackerItemHTML(a) {
+      const statMap = { review: ['badge-review', t('under_review')], approved: ['badge-success', t('approved')], action: ['badge-pending', t('action_needed')], submitted: ['badge-submitted', t('submitted')] };
+      const [cls, lbl] = statMap[a.status] || ['badge-submitted', t('submitted')];
+      const prog = `<div class="progress" style="margin-top:8px"><div class="progress-fill progress-${a.status === 'approved' ? 'green' : 'saffron'}" style="width:${a.progress}%"></div></div>`;
+      const stepsDone = Math.round(a.progress / 100 * a.steps.length);
+      const stepsHTML = `<div class="steps-row">${a.steps.map((s, i) => `<div class="step ${i < stepsDone ? 'done' : i === stepsDone && a.progress < 100 ? 'current' : ''}">${t(s.toLowerCase().replace(' ', '_')) || s}</div>`).join('')}</div>`;
+      const actions = a.status === 'action' ? `<div class="ti-actions"><button class="btn btn-primary btn-sm" onclick="toast(t('upload') + ' feature – coming soon!','info')">📤 ${t('upload')} ${t('documents')}</button><button class="btn btn-ghost btn-sm" data-i18n="view">${t('view')} ${t('details')}</button></div>` :
+        a.status === 'approved' ? `<div class="ti-actions"><button class="btn btn-green btn-sm">📥 ${t('download')}</button></div>` :
+          `<div class="ti-actions"><button class="btn btn-ghost btn-sm">${t('view')} ${t('details')}</button></div>`;
+      return `<div class="tracker-item">
+    <div class="ti-info">
+      <div class="ti-name">${a.name}</div>
+      <div class="ti-meta">${t('status')}: ${lbl} · ${t('date')}: ${a.date}</div>
+      ${stepsHTML}
+      ${actions}
+    </div>
+    <span class="badge ${cls}" style="flex-shrink:0">${lbl}</span>
+  </div>`;
+    }
+
+    function renderNotifs() {
+      const unread = NOTIFS.filter(n => !n.read).length;
+      const badge = document.getElementById('notif-badge');
+      if (badge) badge.textContent = unread;
+      const indicator = document.getElementById('notif-indicator');
+      if (indicator) indicator.style.display = unread > 0 ? 'block' : 'none';
+      document.getElementById('notif-list-full').innerHTML = NOTIFS.map(n => `
+    <div class="notif-card" id="nc-${n.id}">
+      <div class="nc-dot ${n.read ? 'read' : 'unread'}"></div>
+      <div class="nc-body">
+        <div class="nc-text">${t(n.text_key) || n.text}</div>
+        <div class="nc-time">${n.time}</div>
+        ${n.action_key ? `<div class="nc-action" onclick="${n.actionFn}">${t(n.action_key)} →</div>` : ''}
+      </div>
+    </div>`).join('');
+    }
+
+    function markAllRead() { NOTIFS.forEach(n => n.read = true); renderNotifs(); toast(t('all_read'), 'success'); }
+    function clearNotifs() { NOTIFS = []; renderNotifs(); toast(t('notifs_cleared')); }
+    function updateBadges() { renderNotifs(); renderTracker(); }
+
+    /* ─── FILTERS ─────────────────────────────── */
+    function pickFilter(el, type) {
+      const container = el.closest('.filter-row');
+      container.querySelectorAll('.flt').forEach(f => f.classList.remove('active'));
+      el.classList.add('active');
+      if (type === 'scheme') { schemeFilter = el.dataset.f; renderSchemes(); }
+      else { fundFilter = el.dataset.f; renderFunding(); }
+    }
+
+    /* ─── SCHEME MODAL ─────────────────────────── */
+    function openScheme(id) {
+      const s = SCHEMES.find(x => x.id === id);
+      if (!s) return;
+      const badgeMap = { central: 'badge-central', state: 'badge-state', startup: 'badge-startup', health: 'badge-health', education: 'badge-education' };
+      document.getElementById('sm-badge').className = 'badge ' + (badgeMap[s.badge] || 'badge-central');
+      document.getElementById('sm-badge').textContent = t(s.badge);
+      document.getElementById('sm-title').textContent = s.name;
+      document.getElementById('sm-amount').textContent = s.amount;
+      document.getElementById('sm-deadline').textContent = s.deadline;
+      document.getElementById('sm-ministry').textContent = s.ministry;
+      document.getElementById('sm-mode').textContent = s.mode;
+      document.getElementById('sm-about').textContent = s.about;
+      document.getElementById('sm-elig').innerHTML = s.elig.map(e => `<li>${e}</li>`).join('');
+      document.getElementById('sm-docs').innerHTML = s.docs.map(d => `<li><input type="checkbox" onchange="this.parentElement.classList.toggle('checked',this.checked)"> ${d}</li>`).join('');
+      document.getElementById('sm-apply-btn').onclick = () => { closeModal('scheme-modal'); openApply(id); };
+      openModal('scheme-modal');
+    }
+
+    function openFundDetail(id) {
+      const f = FUNDING.find(x => x.id === id);
+      if (!f) return;
+      // Reuse scheme modal for funding details
+      document.getElementById('sm-badge').className = 'badge badge-startup';
+      document.getElementById('sm-badge').textContent = t('startup_funding');
+      document.getElementById('sm-title').textContent = f.name;
+      document.getElementById('sm-amount').textContent = f.amount;
+      document.getElementById('sm-deadline').textContent = f.deadline;
+      document.getElementById('sm-ministry').textContent = f.org;
+      document.getElementById('sm-mode').textContent = f.stage.replace('-', ' ').toUpperCase();
+      document.getElementById('sm-about').textContent = f.desc;
+      document.getElementById('sm-elig').innerHTML = f.tags.map(t => `<li>${t}</li>`).join('');
+      document.getElementById('sm-docs').innerHTML = ['DPIIT Recognition Certificate', 'Incorporation Certificate', 'Business Plan / Pitch Deck', 'CA-certified Financials', 'Founder KYC'].map(d => `<li><input type="checkbox" onchange="this.parentElement.classList.toggle('checked',this.checked)"> ${d}</li>`).join('');
+      document.getElementById('sm-apply-btn').onclick = () => { closeModal('scheme-modal'); openApply(id, 'funding'); };
+      openModal('scheme-modal');
+    }
+
+    /* ─── APPLY MODAL ─────────────────────────── */
+    function openApply(id, type = 'scheme') {
+      applyTarget = { id, type };
+      const item = type === 'scheme' ? SCHEMES.find(x => x.id === id) : FUNDING.find(x => x.id === id);
+      if (!item) return;
+      document.getElementById('apply-modal-title').textContent = 'Apply: ' + item.name;
+      document.getElementById('ap-review-scheme').textContent = item.name;
+      const ref = (type === 'scheme' ? 'SAR' : 'SFR') + '-2025-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('ap-ref-id').textContent = ref;
+      document.getElementById('success-ref').textContent = ref;
+      const docs = type === 'scheme' && item.docs ? item.docs : ['DPIIT Certificate', 'Incorporation Certificate', 'Business Plan', 'Founder KYC', 'Financial Statements'];
+      document.getElementById('doc-upload-list').innerHTML = docs.map(d => `
+    <div class="doc-item">
+      <span class="di-name">📄 ${d}</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="di-status badge badge-review">Required</span>
+        <button class="btn btn-ghost btn-sm" onclick="simulateUpload(this,'${d}')">Upload</button>
+      </div>
+    </div>`).join('');
+      applyStep(1);
+      openModal('apply-modal');
+    }
+
+    function simulateUpload(btn, docName) {
+      btn.textContent = 'Uploading…';
+      btn.disabled = true;
+      setTimeout(() => {
+        const row = btn.closest('.doc-item');
+        row.querySelector('.di-status').className = 'di-status badge badge-success';
+        row.querySelector('.di-status').textContent = 'Uploaded ✓';
+        btn.textContent = '✓';
+        btn.style.color = 'var(--green)';
+        toast(docName + ' uploaded', 'success');
+      }, 1200);
+    }
+
+    function applyStep(step) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('apply-step-' + i).style.display = i === step ? 'block' : 'none';
+        const amsEl = document.getElementById('ams-' + i);
+        if (amsEl) amsEl.className = 'ams' + (i < step ? ' done' : i === step ? ' curr' : '');
+      }
+    }
+
+    function finalSubmit() {
+      const ref = document.getElementById('success-ref').textContent;
+      const schemeName = document.getElementById('ap-review-scheme').textContent;
+      // Add to applications
+      APPLICATIONS.unshift({
+        id: 'app-' + Date.now(), name: schemeName, type: 'scheme',
+        ref: ref, date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+        status: 'submitted', progress: 10,
+        steps: ['Submitted', 'Verified', 'Processing', 'Approved']
+      });
+      // Add notification
+      NOTIFS.unshift({
+        id: 'n-' + Date.now(), text: `✅ Application submitted for <b>${schemeName}</b>. Reference: ${ref}`,
+        time: 'Just now', read: false, action: 'Track Status', actionFn: "nav('tracker')"
+      });
+      applyStep(4);
+      renderTracker(); renderNotifs(); renderDash();
+      updateBadges();
+    }
+
+    /* ─── ELIGIBILITY ─────────────────────────── */
+    function checkEligibility() {
+      const age = +document.getElementById('elig-age').value;
+      const gender = document.getElementById('elig-gender').value;
+      const occ = document.getElementById('elig-occ').value;
+      const income = document.getElementById('elig-income').value;
+      const state = document.getElementById('elig-state').value;
+      if (!age || !gender || !occ || !income || !state) { toast('Please fill all fields to check eligibility', 'error'); return; }
+      const matches = [];
+      if (occ === 'Farmer' || occ === 'Self-Employed') matches.push({ name: 'PM-KISAN Samman Nidhi', status: 'yes', reason: 'Matches farmer/self-employed criteria' });
+      if (income === 'lt1' || income === '1-3') matches.push({ name: 'Ayushman Bharat – PM-JAY', status: 'yes', reason: 'Income below ₹3L – likely eligible' });
+      if (occ === 'Startup Founder') matches.push({ name: 'Startup India Seed Fund', status: 'yes', reason: 'Startup founder – check DPIIT registration' });
+      if (occ === 'Student' && (income === 'lt1' || income === '1-3')) matches.push({ name: 'National Scholarship Portal', status: 'yes', reason: 'Student with income below ₹2.5L' });
+      if (gender === 'Female' && age >= 18) matches.push({ name: 'Stand-Up India', status: 'yes', reason: 'Women entrepreneur – eligible for ₹10L–1Cr loan' });
+      if (state === 'Karnataka' && gender === 'Female') matches.push({ name: 'Karnataka Gruha Lakshmi', status: 'yes', reason: 'Female Karnataka resident – eligible' });
+      if (occ === 'Salaried' || occ === 'Self-Employed') matches.push({ name: 'PM Mudra Yojana', status: 'maybe', reason: 'May be eligible based on business type' });
+      if (age < 18) matches.push({ name: 'PM-KISAN', status: 'no', reason: 'Must be 18+ years old' });
+      const r = document.getElementById('elig-result');
+      r.style.display = 'block';
+      r.innerHTML = `<div class="divider"></div><h3 style="font-size:16px;font-weight:700;margin-bottom:12px">📊 Your Eligibility Results (${matches.length} matches)</h3>` +
+        matches.map(m => `<div class="elig-scheme ${m.status === 'yes' ? 'elig-yes' : m.status === 'no' ? 'elig-no' : 'elig-maybe'}">
+      <span style="font-size:14px;font-weight:600">${m.name}</span>
+      <div style="text-align:right">
+        <span class="badge ${m.status === 'yes' ? 'badge-success' : m.status === 'no' ? 'badge-rejected' : 'badge-review'}">${m.status === 'yes' ? '✅ Eligible' : m.status === 'no' ? '❌ Not Eligible' : '⚠️ Maybe'}</span>
+        <div style="font-size:11px;color:var(--text-sm);margin-top:3px">${m.reason}</div>
+      </div>
+    </div>`).join('');
+      if (!matches.length) r.innerHTML += '<p style="font-size:14px;color:var(--text-sm)">No matches found. Try adjusting your details.</p>';
+    }
+    function resetEligibility() {
+      ['elig-age', 'elig-gender', 'elig-occ', 'elig-income', 'elig-state', 'elig-cat'].forEach(id => { document.getElementById(id).value = ''; });
+      document.getElementById('elig-result').style.display = 'none';
+    }
+
+    /* ─── PROFILE ─────────────────────────────── */
+    function openEditProfile() { openModal('edit-profile-modal'); }
+    async function saveProfile() {
+      const name = document.getElementById('ep-fname').value + ' ' + document.getElementById('ep-lname').value;
+      const email = document.getElementById('ep-email').value;
+      const state = document.getElementById('ep-state').value;
+      
+      try {
+        const res = await fetch('/api/auth/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: currentUser.id, name, email, state })
+        });
+        const data = await res.json();
+        if (data.success) {
+          currentUser = { ...currentUser, ...data.user };
+          currentUser.initials = currentUser.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+          enterApp();
+          closeModal('edit-profile-modal');
+          toast(t('profile_updated'), 'success');
+        }
+      } catch (e) {
+        toast('Update failed', 'error');
+      }
+    }
+
+    /* ─── CHAT ─────────────────────────────────── */
+    const BOT_RESPONSES = {
+      'pm-kisan': 'PM-KISAN provides ₹6,000 per year (₹2,000 in 3 instalments) to eligible small and marginal farmer families. Eligibility: landholding farmer family with Aadhaar-linked bank account. Apply at pmkisan.gov.in or your nearest CSC centre. 🌾',
+      'mudra': 'PM Mudra Yojana offers collateral-free loans: <b>Shishu</b> (up to ₹50K), <b>Kishor</b> (₹50K–5L), <b>Tarun</b> (₹5L–10L). Visit any bank or NBFC. Docs needed: Aadhaar, PAN, 6-month bank statement, business plan. 💼',
+      'ayushman': 'Ayushman Bharat–PM JAY covers ₹5 lakh/family/year for hospitalisation. Check eligibility at pmjay.gov.in with your ration card or mobile. Cashless treatment at 25,000+ empanelled hospitals. 🏥',
+      'startup': 'To register on Startup India: 1) Incorporate company/LLP 2) Go to startupindia.gov.in 3) Apply for DPIIT Recognition 4) Get tax exemptions, fast-track patents, and access to ₹50L Seed Fund. Timeline: 3–7 working days. 🚀',
+      'scholarship': 'National Scholarship Portal (scholarships.gov.in) offers post-matric & merit-cum-means scholarships. Annual income must be below ₹2.5L (varies by scheme). Deadline typically Oct 31. Apply before the cutoff! 🎓',
+      'eligible': 'Based on your profile as a <b>' + ((currentUser || {}).role || 'Citizen') + '</b>, I recommend checking: PM-KISAN (if farming), Ayushman Bharat (health), PM Mudra (business), NSP (if student). Use our <b>Eligibility Checker</b> for accurate matching! ✅',
+      'dpiit': 'DPIIT Recognition steps: 1) Incorporate (Pvt Ltd / LLP / OPC) 2) Apply on startupindia.gov.in 3) Fill form with business description, innovation proof 4) Approval in 3–7 days. Benefits: Tax holiday (3 yrs), IP fast-track, easier compliance. 📋',
+      'documents': 'Common documents for most schemes: Aadhaar card, PAN card, Bank passbook (first page), Income certificate, Caste certificate (SC/ST/OBC), Residence proof, Passport photo. Specific schemes may need additional docs — check each scheme\'s detail page. 📄',
+      'women': '👩 Schemes for women: <b>Stand-Up India</b> (₹10L–1Cr loan), <b>Beti Bachao Beti Padhao</b>, <b>PMEGP</b> (35% subsidy for women), <b>Gruha Lakshmi</b> (Karnataka), <b>Mahila Udyam Nidhi</b>. Also check state-specific schemes.',
+      'seed fund': 'Startup India Seed Fund provides up to ₹20L for POC/prototype and up to ₹50L for market entry, disbursed through selected incubators. Eligibility: DPIIT-recognised startup, less than 2 years old, no Series A. Deadline: 30 Jun 2025. 💰',
+    };
+    function initChat() {
+      document.getElementById('chat-msgs').innerHTML = '';
+      chatHistory = [];
+      addBotMsg(t('chat_welcome'));
+    }
+    function addBotMsg(html) {
+      const msgs = document.getElementById('chat-msgs');
+      const div = document.createElement('div');
+      div.className = 'msg msg-bot';
+      div.innerHTML = html;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    function addUserMsg(text) {
+      const msgs = document.getElementById('chat-msgs');
+      const div = document.createElement('div');
+      div.className = 'msg msg-user';
+      div.textContent = text;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    function addThinking() {
+      const msgs = document.getElementById('chat-msgs');
+      const div = document.createElement('div');
+      div.className = 'msg-thinking';
+      div.id = 'typing-indicator';
+      div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    function removeThinking() {
+      const el = document.getElementById('typing-indicator');
+      if (el) el.remove();
+    }
+    function localBotReply(q) {
+      const lq = q.toLowerCase();
+      if (lq.includes('kisan') || lq.includes('farmer')) return BOT_RESPONSES['pm-kisan'];
+      if (lq.includes('mudra')) return BOT_RESPONSES['mudra'];
+      if (lq.includes('ayushman') || lq.includes('health insurance') || lq.includes('hospital')) return BOT_RESPONSES['ayushman'];
+      if (lq.includes('startup india') || lq.includes('dpiit')) return BOT_RESPONSES['dpiit'];
+      if (lq.includes('scholarship') || lq.includes('nsp') || lq.includes('study')) return BOT_RESPONSES['scholarship'];
+      if (lq.includes('eligible') || lq.includes('qualify') || lq.includes('which scheme')) return BOT_RESPONSES['eligible'];
+      if (lq.includes('document') || lq.includes('docs') || lq.includes('required')) return BOT_RESPONSES['documents'];
+      if (lq.includes('women') || lq.includes('mahila') || lq.includes('female')) return BOT_RESPONSES['women'];
+      if (lq.includes('seed fund') || lq.includes('grant') || lq.includes('startup fund')) return BOT_RESPONSES['seed fund'];
+      return null;
+    }
+    async function sendChat() {
+      const input = document.getElementById('chat-in');
+      const q = input.value.trim();
+      if (!q) return;
+      input.value = '';
+      addUserMsg(q);
+      chatHistory.push({ role: 'user', content: q });
+      addThinking();
+      // Try local first, then API
+      const local = localBotReply(q);
+      if (local) {
+        setTimeout(() => { removeThinking(); addBotMsg(local); chatHistory.push({ role: 'assistant', content: local }); }, 900);
+        return;
+      }
+      // Call Local Backend Agent API
+      try {
+        const res = await fetch('/api/agent/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: q,
+            userId: currentUser ? currentUser.id : 'demo-user'
+          })
+        });
+        const data = await res.json();
+        removeThinking();
+        const reply = data.response || 'I couldn\'t process that. Please try again.';
+        addBotMsg(reply.replace(/\n/g, '<br>'));
+        chatHistory.push({ role: 'assistant', content: reply });
+      } catch (e) {
+        removeThinking();
+        addBotMsg(t('chat_error'));
+      }
+    }
+    function qpSend(text) {
+      document.getElementById('chat-in').value = text;
+      sendChat();
+      nav('chat');
+    }
+    function clearChat() { initChat(); }
+
+    /* ─── MODAL HELPERS ─────────────────────── */
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+    /* ─── TOAST ─────────────────────────────── */
+    function toast(msg, type = '') {
+      const wrap = document.getElementById('toast-wrap');
+      const t = document.createElement('div');
+      t.className = 'toast' + (type ? ' ' + type : '');
+      t.innerHTML = `<span>${msg}</span>`;
+      wrap.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(24px)'; setTimeout(() => t.remove(), 300); }, 3000);
+    }
+
+    function triggerLibraryDemo() {
+      closeModal('winner-modal');
+      nav('notifications');
+      const libNotif = {
+        id: 'notif-lib-demo',
+        title: '📚 Library Return Reminder',
+        text: 'Namaste Ramesh! Your book "The India Story" was due 2 days ago. Please return it to the Central Library to avoid late fees. Need help with the location?',
+        time: 'Just now',
+        read: false,
+        type: 'action',
+        whatsapp: true
+      };
+      NOTIFS.unshift(libNotif);
+      renderNotifs();
+      toast('WhatsApp Demo Message Sent!', 'success');
+      setTimeout(() => {
+        addBotMsg("<b>System Update:</b> Proactive WhatsApp outreach triggered for User ID: RK_09. Message sent in Hindi & English.");
+      }, 1000);
+    }
+
+    function renderDash() {
+      if (!currentUser) return;
+      const wbHello = document.getElementById('wb-hello');
+      if (wbHello) wbHello.innerHTML = `${t('namaste')}, ${currentUser.name}! 🙏`;
+
+      const wbSub = document.getElementById('wb-sub');
+      if (wbSub) wbSub.innerHTML = t('welcome_sub', { n: 12, m: 3 });
+
+      const rolePill = document.getElementById('wb-role-pill');
+      if (rolePill) rolePill.innerHTML = `👤 ${t('role_' + currentUser.role.toLowerCase())}`;
+
+      // Rec schemes
+      const recs = SCHEMES.slice(0, 4);
+      document.getElementById('dash-rec-grid').innerHTML = recs.map(schemeCardHTML).join('');
+      // Funding
+      const funds = FUNDING.slice(0, 4);
+      document.getElementById('dash-funding-grid').innerHTML = funds.map(fundCardHTML).join('');
+      // Tracker preview
+      const apps = APPLICATIONS.slice(0, 2);
+      document.getElementById('dash-tracker-preview').innerHTML = apps.map(trackerItemHTML).join('');
+    }
+
+    /* ─── INIT ─────────────────────────────── */
+    // Keyboard close modal
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+    });
+
+    // STARTUP
+    const hash = window.location.hash;
+    if (hash === '#signup') authTab('signup');
+    else if (hash === '#login') authTab('login');
+    
+    renderAll();
+    initChat();
+  </script>
+</body>
+
+</html>

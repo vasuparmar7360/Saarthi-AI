@@ -1,0 +1,103 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid())
+  name          String?
+  email         String?        @unique
+  phoneNumber   String         @unique
+  password      String?
+  role          String         @default("Citizen")
+  state         String?
+  income        String?
+  language      String         @default("en")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  applications  Application[]
+  documents     Document[]
+  payments      Payment[]
+  notifications Notification[]
+  conversations Conversation[]
+}
+
+model Scheme {
+  id            String        @id @default(uuid())
+  title         String
+  description   String
+  department    String
+  state         String?
+  eligibility   Json
+  benefits      Json
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  applications  Application[]
+}
+
+model Application {
+  id            String   @id @default(uuid())
+  userId        String
+  schemeId      String
+  status        String   @default("PENDING") // PENDING, PAID, SUBMITTED, APPROVED, REJECTED
+  formData      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id])
+  scheme        Scheme   @relation(fields: [schemeId], references: [id])
+  payment       Payment?
+}
+
+model Document {
+  id          String   @id @default(uuid())
+  userId      String
+  type        String   // AADHAAR, INCOME_CERT, RATION_CARD, etc.
+  fileUrl     String
+  extracted   Json?    // Extracted OCR data
+  isValidated Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  userId        String
+  applicationId String   @unique
+  amount        Float    @default(15.0)
+  currency      String   @default("INR")
+  status        String   @default("CREATED") // CREATED, SUCCESS, FAILED
+  razorpayId    String?
+  createdAt     DateTime @default(now())
+
+  user          User        @relation(fields: [userId], references: [id])
+  application   Application @relation(fields: [applicationId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  type      String   // WHATSAPP, EMAIL, DASHBOARD
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Conversation {
+  id        String   @id @default(uuid())
+  userId    String
+  channel   String   @default("WHATSAPP")
+  messages  Json     // Array of message objects
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id])
+}
